@@ -21,6 +21,17 @@ var placeData = {
     country:""
 }
 
+var cnv
+function centerCanvas() {
+    var x = (windowWidth - width) / 2;
+    var y = 56
+    cnv.position(x, y);
+}
+
+function windowResized() {
+    centerCanvas();
+}
+
 // Merc stands for Mercator Projection.
 // mercX and mercY calculates "world coordinates".
 function mercX(longitude, zoom) {
@@ -63,16 +74,12 @@ function retrieveData(geocodingData) {
 }
 
 function setup() {
-    createCanvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+    cnv = createCanvas(WINDOW_WIDTH, WINDOW_HEIGHT);
     translate(width/2, height/2)
     imageMode(CENTER)
     image(mapImage, 0, 0)
     frameRate(30)
-    var inLong = createInput('Longitude')
-    var inLat = createInput('Latitude')
-    inLong.input(longEvent)
-    inLat.input(latEvent)
-
+    centerCanvas()
 
     var counter = 0
 
@@ -123,14 +130,7 @@ function setup() {
 
 }
 
-function longEvent() {
-    centerLongitudeDegrees = this.value()
-    
-}
 
-function latEvent() {
-    centerLatitudeDegrees = this.value()
-}
 
 function draw() {
 

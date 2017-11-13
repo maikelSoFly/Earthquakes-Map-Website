@@ -13,7 +13,17 @@ class EarthquakesController extends Controller
      */
     public function indexAction(Request $request)
     {
-        // replace this example code with whatever you need
-        return $this->render('earthquakes/index.html.twig');
+        $posts = $this->getDoctrine()
+            ->getManager()
+            ->createQueryBuilder()
+            ->from('AppBundle:Post', 'p')
+            ->select('p')
+            ->setMaxResults(20)
+            ->getQuery()
+            ->getResult();
+
+        return $this->render('earthquakes/index.html.twig', array(
+            'posts' => $posts
+        ));
     }
 }
