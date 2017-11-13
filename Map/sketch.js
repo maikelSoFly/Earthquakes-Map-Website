@@ -13,7 +13,7 @@ var WINDOW_HEIGHT
 // ZOOM TO THIS COORDINATES:
 var centerLatitudeDegrees = 37.77493
 var centerLongitudeDegrees = -122.41942
-var zoom = 4
+var zoom = 1
 
 var placeData = {
     locality:"",
