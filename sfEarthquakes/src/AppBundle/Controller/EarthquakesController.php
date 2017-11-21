@@ -13,17 +13,22 @@ class EarthquakesController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $posts = $this->getDoctrine()
+        $qb = $this->getDoctrine()
             ->getManager()
             ->createQueryBuilder()
             ->from('AppBundle:Post', 'p')
-            ->select('p')
-            ->setMaxResults(20)
-            ->getQuery()
-            ->getResult();
+            ->select('p');
+
+        $paginator = $this->get('knp_paginator');
+        $pagination = $paginator->paginate(
+          $qb,
+          $request->query->get('page', 1),
+          4
+        );
+
 
         return $this->render('earthquakes/index.html.twig', array(
-            'posts' => $posts
+            'posts' => $pagination
         ));
     }
 }

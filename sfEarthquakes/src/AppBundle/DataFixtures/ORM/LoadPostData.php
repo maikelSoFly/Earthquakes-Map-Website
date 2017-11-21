@@ -25,7 +25,7 @@ class LoadPostData implements FixtureInterface
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 100; $i++) {
+        for ($i = 0; $i < 1000; $i++) {
             $post = new Post();
             $post->setTitle($faker->sentence(3));
             $post->setContent($faker->text(700));

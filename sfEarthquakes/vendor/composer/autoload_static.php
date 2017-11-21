@@ -57,6 +57,10 @@ class ComposerStaticInit374429f4ab4935127e2d36a0613c8d3a
         array (
             'Monolog\\' => 8,
         ),
+        'K' => 
+        array (
+            'Knp\\Bundle\\PaginatorBundle\\' => 27,
+        ),
         'J' => 
         array (
             'JavierEguiluz\\Bundle\\EasyAdminBundle\\' => 37,
@@ -201,6 +205,10 @@ class ComposerStaticInit374429f4ab4935127e2d36a0613c8d3a
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
+        'Knp\\Bundle\\PaginatorBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/knplabs/knp-paginator-bundle',
+        ),
         'JavierEguiluz\\Bundle\\EasyAdminBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/javiereguiluz/easyadmin-bundle/legacy',
@@ -291,6 +299,13 @@ class ComposerStaticInit374429f4ab4935127e2d36a0613c8d3a
             'Pagerfanta\\' => 
             array (
                 0 => __DIR__ . '/..' . '/pagerfanta/pagerfanta/src',
+            ),
+        ),
+        'K' => 
+        array (
+            'Knp\\Component' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/knp-components/src',
             ),
         ),
         'D' => 

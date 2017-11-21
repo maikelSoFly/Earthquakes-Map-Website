@@ -16,6 +16,7 @@
       <parameter key="SwiftmailerBundle">Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle</parameter>
       <parameter key="DoctrineBundle">Doctrine\Bundle\DoctrineBundle\DoctrineBundle</parameter>
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
+      <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -59,6 +60,11 @@
         <parameter key="parent">null</parameter>
         <parameter key="path">/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/sensio/framework-extra-bundle</parameter>
         <parameter key="namespace">Sensio\Bundle\FrameworkExtraBundle</parameter>
+      </parameter>
+      <parameter key="KnpPaginatorBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle</parameter>
+        <parameter key="namespace">Knp\Bundle\PaginatorBundle</parameter>
       </parameter>
       <parameter key="AppBundle" type="collection">
         <parameter key="parent">null</parameter>
@@ -340,6 +346,12 @@
     <parameter key="sensio_framework_extra.converter.doctrine.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DoctrineParamConverter</parameter>
     <parameter key="sensio_framework_extra.converter.datetime.class">Sensio\Bundle\FrameworkExtraBundle\Request\ParamConverter\DateTimeParamConverter</parameter>
     <parameter key="sensio_framework_extra.view.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\TemplateListener</parameter>
+    <parameter key="knp_paginator.class">Knp\Component\Pager\Paginator</parameter>
+    <parameter key="knp_paginator.helper.processor.class">Knp\Bundle\PaginatorBundle\Helper\Processor</parameter>
+    <parameter key="knp_paginator.template.pagination">others/twitter_bootstrap_v4_pagination.html.twig</parameter>
+    <parameter key="knp_paginator.template.filtration">@KnpPaginator/Pagination/filtration.html.twig</parameter>
+    <parameter key="knp_paginator.template.sortable">@KnpPaginator/Pagination/sortable_link.html.twig</parameter>
+    <parameter key="knp_paginator.page_range">5</parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -634,7 +646,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>-2w7Cs2PXmpLB+wxKNgv3i</argument>
+      <argument>V9OtMV9iHh+RZyavvSukod</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -644,7 +656,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>-2w7Cs2PXmpLB+wxKNgv3i</argument>
+      <argument>V9OtMV9iHh+RZyavvSukod</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -1180,6 +1192,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ro.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ro.xliff</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf</argument>
@@ -1190,6 +1203,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.id.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.id.xliff</argument>
           </argument>
           <argument key="hu" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf</argument>
@@ -1214,11 +1228,13 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.es.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.es.xliff</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.it.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.it.xliff</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
@@ -1229,6 +1245,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.de.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.de.xliff</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
@@ -1261,6 +1278,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.en.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.en.xliff</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
@@ -1281,6 +1299,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pl.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.pl.xliff</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf</argument>
@@ -1295,6 +1314,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fr.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fr.xliff</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf</argument>
@@ -1311,11 +1331,13 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ru.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ru.xliff</argument>
           </argument>
           <argument key="lt" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lt.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.lt.xliff</argument>
           </argument>
           <argument key="tr" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.tr.xlf</argument>
@@ -1346,6 +1368,7 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nl.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.nl.xliff</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
@@ -1364,6 +1387,12 @@
           </argument>
           <argument key="ua" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ua.xlf</argument>
+          </argument>
+          <argument key="ky" type="collection">
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ky.xliff</argument>
+          </argument>
+          <argument key="sw" type="collection">
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.sw.xliff</argument>
           </argument>
         </argument>
       </argument>
@@ -1747,6 +1776,14 @@
         <argument>0</argument>
       </call>
       <call method="addListener">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
         <argument>kernel.response</argument>
         <argument type="collection">
           <argument type="service" id="response_listener"/>
@@ -1892,14 +1929,6 @@
       </call>
       <call method="addListener">
         <argument>kernel.request</argument>
-        <argument type="collection">
-          <argument type="service" id="debug.debug_handlers_listener"/>
-          <argument>configure</argument>
-        </argument>
-        <argument>2048</argument>
-      </call>
-      <call method="addListener">
-        <argument>console.command</argument>
         <argument type="collection">
           <argument type="service" id="debug.debug_handlers_listener"/>
           <argument>configure</argument>
@@ -2073,6 +2102,46 @@
           <argument>onKernelResponse</argument>
         </argument>
         <argument>-128</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>before</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.paginate"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sortable"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.before</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.filtration"/>
+          <argument>before</argument>
+        </argument>
+        <argument>1</argument>
+      </call>
+      <call method="addListener">
+        <argument>knp_pager.pagination</argument>
+        <argument type="collection">
+          <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
+          <argument>pagination</argument>
+        </argument>
+        <argument>1</argument>
       </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver">
@@ -2688,12 +2757,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a09a1706592c4.05127718</argument>
+      <argument>5a1334fb386ae0.25974815</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a09a1706592c4.05127718</argument>
+      <argument>5a1334fb386ae0.25974815</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -2801,6 +2870,9 @@
         <argument type="service" id="doctrine.twig.doctrine_extension"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="knp_paginator.twig.extension.pagination"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.dump"/>
       </call>
       <call method="addExtension">
@@ -2873,6 +2945,10 @@
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
@@ -3015,6 +3091,10 @@
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
+        <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
@@ -3570,6 +3650,46 @@
       <argument type="service" id="security.authorization_checker" on-invalid="null"/>
     </service>
     <service id="sensio_framework_extra.security.expression_language.default" class="Sensio\Bundle\FrameworkExtraBundle\Security\ExpressionLanguage" public="false"/>
+    <service id="knp_paginator" class="Knp\Component\Pager\Paginator">
+      <argument type="service" id="debug.event_dispatcher"/>
+      <call method="setDefaultPaginatorOptions">
+        <argument type="collection">
+          <argument key="pageParameterName">page</argument>
+          <argument key="sortFieldParameterName">sort</argument>
+          <argument key="sortDirectionParameterName">direction</argument>
+          <argument key="filterFieldParameterName">filterField</argument>
+          <argument key="filterValueParameterName">filterValue</argument>
+          <argument key="distinct">true</argument>
+        </argument>
+      </call>
+    </service>
+    <service id="knp_paginator.subscriber.paginate" class="Knp\Component\Pager\Event\Subscriber\Paginate\PaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sortable" class="Knp\Component\Pager\Event\Subscriber\Sortable\SortableSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.filtration" class="Knp\Component\Pager\Event\Subscriber\Filtration\FiltrationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+    </service>
+    <service id="knp_paginator.subscriber.sliding_pagination" class="Knp\Bundle\PaginatorBundle\Subscriber\SlidingPaginationSubscriber">
+      <tag name="knp_paginator.subscriber"/>
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <argument type="collection">
+        <argument key="defaultPaginationTemplate">others/twitter_bootstrap_v4_pagination.html.twig</argument>
+        <argument key="defaultSortableTemplate">@KnpPaginator/Pagination/sortable_link.html.twig</argument>
+        <argument key="defaultFiltrationTemplate">@KnpPaginator/Pagination/filtration.html.twig</argument>
+        <argument key="defaultPageRange">5</argument>
+      </argument>
+    </service>
+    <service id="knp_paginator.helper.processor" class="Knp\Bundle\PaginatorBundle\Helper\Processor">
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="translator.data_collector"/>
+    </service>
+    <service id="knp_paginator.twig.extension.pagination" class="Knp\Bundle\PaginatorBundle\Twig\Extension\PaginationExtension">
+      <tag name="twig.extension"/>
+      <argument type="service" id="knp_paginator.helper.processor"/>
+    </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="var_dumper.cloner"/>
@@ -3990,7 +4110,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>GYiBaPV+9Z</argument>
       <argument>0</argument>
-      <argument>-2w7Cs2PXmpLB+wxKNgv3i</argument>
+      <argument>V9OtMV9iHh+RZyavvSukod</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -3998,7 +4118,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>Z-FFhyGPbr</argument>
       <argument>0</argument>
-      <argument>-2w7Cs2PXmpLB+wxKNgv3i</argument>
+      <argument>V9OtMV9iHh+RZyavvSukod</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4006,7 +4126,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>zp2OLi7rb4</argument>
       <argument>0</argument>
-      <argument>-2w7Cs2PXmpLB+wxKNgv3i</argument>
+      <argument>V9OtMV9iHh+RZyavvSukod</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4014,7 +4134,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>YDeP7SBZYM</argument>
       <argument>0</argument>
-      <argument>-2w7Cs2PXmpLB+wxKNgv3i</argument>
+      <argument>V9OtMV9iHh+RZyavvSukod</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
