@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <link rel="stylesheet", href="{{ asset('css/post.css') }}">
+    <h1>{{ post.title }}</h1>
+
+
+  <div>
+      <font size=2 color = gray>
+          <p> Dodano: {{ post.createdAt }}</p>
+      </font>
+
+      <p> {{ post.content }} </p>
+
+          <hr/>
+
+      <h3>Comments</h3>
+
+      {% if app.user %}
+
+          {{ form_start(form) }}
+
+            {{ form_widget(form) }}
+
+            <button class="btn btn-primary pull-right">Add coment</button>
+
+          {{ form_end(form) }}
+
+          <div class="col-xs-12" style="height:50px;"></div>
+
+      {% else %}
+         <p class="red-text text-center">Users must be logged in to comment.<a href="{{ path('fos_user_security_login') }}"> Log in</a></p>
+
+      {% endif %}
+
+      {% for comment in post.comments %}
+
+          <div>
+              <p>{{ comment.content }}</p>
+              <font size=2 color="gray">
+                  <p> Dodano: {{ comment.createdAt }}</p>
+              </font>
+
+          </div>
+          <br/>
+
+      {% endfor %}
+
+
+  </div>
+
+
+
+
+{% endblock body %}

@@ -46,14 +46,11 @@ class Comment
      * @var
      *
      * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
-     * @ORM\JoinColumn(name="user_id", nullable=true)
      */
     private $user;
 
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime('now');
-    }
+
+
 
 
     /**
@@ -111,9 +108,10 @@ class Comment
      */
     public function getCreatedAt()
     {
-        return $this->createdAt->format('Y-m-d H:i:s');
+        return $this->createdAt;
     }
 
+    
 
     /**
      * Set post
@@ -141,25 +139,5 @@ class Comment
         $this->user = $user;
 
         return $this;
-    }
-
-    /**
-     * Get post
-     *
-     * @return \AppBundle\Entity\Post
-     */
-    public function getPost()
-    {
-        return $this->post;
-    }
-
-    /**
-     * Get user
-     *
-     * @return \AppBundle\Entity\User
-     */
-    public function getUser()
-    {
-        return $this->user;
     }
 }

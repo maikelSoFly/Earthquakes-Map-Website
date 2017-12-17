@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block javascripts %}
+    <link rel="stylesheet", href="{{ asset('css/mapCanvas.css') }}">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
     <script src="js/sketch.js"></script>
@@ -13,7 +14,7 @@
     {% for post in posts  %}
         <div>
 
-            <h2>{{ post.title }}</h2>
+            <h2><a href="{{ path('post_show', {'id': post.id}) }}"> {{ post.title }}</a></h2>
             <p>{{ post.content }}</p>
             <font size = 1>
                 <p>{{ post.createdAt }}</p>
