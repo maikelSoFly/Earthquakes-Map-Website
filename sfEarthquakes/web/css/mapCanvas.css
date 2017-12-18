@@ -2,20 +2,25 @@ html, body {
     /*height: 100%;*/
 }
 
-body {
-    padding-top: 40rem;
-    padding-bottom: 4rem;
-    /*margin: 0;*/
-    display: flex;
+.mapCanvas {
+    padding-top: 1.5rem;
+    width: 100%;
+    display:block;
+    /*padding-bottom: 4rem;*/
+    /*!*margin: 0;*!*/
+    /*display: flex;*/
 
-    /* This centers our sketch horizontally. */
-    justify-content: center;
+    /*!* This centers our sketch horizontally. *!*/
+    /*justify-content: center;*/
 
-    /* This centers our sketch vertically. */
-    align-items: center;
+    /*!* This centers our sketch vertically. *!*/
+    /*align-items: center;*/
+
 }
 
 .starter-template {
     padding: 6rem 1.5rem;
     text-align: center;
 }
+
+

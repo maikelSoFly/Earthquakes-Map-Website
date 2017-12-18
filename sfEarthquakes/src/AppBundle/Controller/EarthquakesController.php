@@ -26,7 +26,7 @@ class EarthquakesController extends Controller
         $pagination = $paginator->paginate(
           $qb,
           $request->query->get('page', 1),
-          4
+          5
         );
 
 
@@ -34,6 +34,7 @@ class EarthquakesController extends Controller
             'posts' => $pagination
         ));
     }
+
 
     /**
      * @Route("/article/{id}", name="post_show")
@@ -59,7 +60,6 @@ class EarthquakesController extends Controller
             }
 
         }
-
 
         return $this->render('earthquakes/show.html.twig', array(
             'post' => $post,

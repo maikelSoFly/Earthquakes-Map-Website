@@ -8,7 +8,7 @@ body {
 
 /* change the background color */
 .navbar-custom {
-    background-color: rgba(0, 0, 0, 0.91);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 /* change the brand and text color */
 .navbar-custom .navbar-brand,
@@ -29,4 +29,8 @@ body {
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
     color: #ffffff;
+}
+
+.btn{
+    margin-left:10px;
 }

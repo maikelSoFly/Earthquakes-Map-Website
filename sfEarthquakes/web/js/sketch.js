@@ -11,9 +11,9 @@ var WINDOW_WIDTH
 var WINDOW_HEIGHT
 
 // ZOOM TO THIS COORDINATES:
-var centerLatitudeDegrees = 37.77493
-var centerLongitudeDegrees = -122.41942
-var zoom = 2
+var centerLatitudeDegrees = 47.115
+var centerLongitudeDegrees = -101.300278
+var zoom = 1.5
 
 var placeData = {
     locality:"",
@@ -22,15 +22,7 @@ var placeData = {
 }
 
 var cnv
-function centerCanvas() {
-    var x = (windowWidth - width) / 2;
-    var y = 56
-    cnv.position(x, y);
-}
 
-function windowResized() {
-    centerCanvas();
-}
 
 // Merc stands for Mercator Projection.
 // mercX and mercY calculates "world coordinates".
@@ -47,7 +39,7 @@ function mercY(latitude, zoom) {
 function preload() {
     // Fullscreen
     WINDOW_WIDTH = windowWidth
-    WINDOW_HEIGHT = windowHeight - 130;
+    WINDOW_HEIGHT = round((9*WINDOW_WIDTH)/16);
 
     centerLongitude = mercX(centerLongitudeDegrees, zoom)
     centerLatitude = mercY(centerLatitudeDegrees, zoom)
@@ -73,18 +65,15 @@ function retrieveData(geocodingData) {
     placeData.country = geocodingData.features[0].context[3].text
 }
 
-function setup() {
-    cnv = createCanvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+function layout(mapi) {
+    background(0)
     translate(width/2, height/2)
-    imageMode(CENTER)
-    image(mapImage, 0, 0)
-    frameRate(30)
-    centerCanvas()
+    image(mapi, 0, 0)
+
+    fill(255,50,50, 150)
+    noStroke()
 
     var counter = 0
-
-    fill(255,0,0, 150)
-    noStroke()
     for (var i = 0; i < earthquakes.length; i++) {
         var data = earthquakes[i].split(/,/)
         if (data[4] > MIN_MAG_TO_SHOW) {
@@ -99,24 +88,61 @@ function setup() {
             counter += 1
         }
     }
+    print('Shown earthquakes: %s of total %s', counter, earthquakes.length)
+
+}
+
+function setup() {
+    cnv = createCanvas(WINDOW_WIDTH, WINDOW_HEIGHT);
+    cnv.parent('sketch-holder');
+
+
+    imageMode(CENTER)
+    layout(mapImage)
+
+
+    frameRate(10)
+    //centerCanvas()
+
+
+    // resize the canvas to fill browser window dynamically
+    window.addEventListener('resize', resizeCan, false);
+    function resizeCan() {
+
+        WINDOW_WIDTH = windowWidth
+        WINDOW_HEIGHT = round((9*WINDOW_WIDTH)/16);
+        resizeCanvas(WINDOW_WIDTH, round((9*WINDOW_WIDTH)/16));
+
+        /**
+         * Your drawings need to be inside this function otherwise they will be reset when
+         * you resize the browser window and the canvas goes will be cleared.
+         */
+
+        var lat = centerLatitudeDegrees
+        var lon = centerLongitudeDegrees
+        loadImage('https://api.mapbox.com/styles/v1/mapbox/dark-v9/static/'+lon.toString()+','+lat.toString()+','+zoom.toString()+',0,0/'+WINDOW_WIDTH.toString()+'x'+WINDOW_HEIGHT.toString()+'?access_token=' + MY_ACCESS_TOKEN, function(img) {
+            layout(img)
+        })
+
+    }
 
     //MARK: - Printing info.
-    push()
-    textSize(15)
-    fill(255)
-    var txt = 'Latitude: '+centerLatitudeDegrees.toString()+'\n'+
-        'Longitude: '+centerLongitudeDegrees.toString()+'\n'+
-        'Name: '+placeData.locality+', '+placeData.place+', '+placeData.country+'\n'+
-        'Zoom: '+zoom.toString()+'x\n'
-    text(txt, 15-width/2, 33-height/2)
-    var txtWidth = textWidth(txt)
-    pop()
-    push()
-    fill(255,255,255,50)
-    stroke(255)
-    strokeWeight(1)
-    rect(5-width/2, 10-height/2, 300, 95, 10)
-    pop()
+    // push()
+    // textSize(15)
+    // fill(255)
+    // var txt = 'Latitude: '+centerLatitudeDegrees.toString()+'\n'+
+    //     'Longitude: '+centerLongitudeDegrees.toString()+'\n'+
+    //     'Name: '+placeData.locality+', '+placeData.place+', '+placeData.country+'\n'+
+    //     'Zoom: '+zoom.toString()+'x\n'
+    // text(txt, 15-width/2, 33-height/2)
+    // var txtWidth = textWidth(txt)
+    // pop()
+    // push()
+    // fill(255,255,255,50)
+    // stroke(255)
+    // strokeWeight(1)
+    // rect(5-width/2, 10-height/2, 300, 95, 10)
+    // pop()
 
     //MARK: - Center indicator.
     if (zoom >= 3) {
@@ -126,10 +152,7 @@ function setup() {
         pop()
     }
 
-    print('Shown earthquakes: %s of total %s', counter, earthquakes.length)
-
 }
-
 
 
 function draw() {
