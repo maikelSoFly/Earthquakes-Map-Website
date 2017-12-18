@@ -39,27 +39,31 @@ class EarthquakesController extends Controller
      * @Route("/article/{id}", name="post_show")
      */
     public function showAction(Post $post, Request $request) {
-        $comment = new Comment();
-        $comment->setPost($post);
+        $form = null;
 
-        // $comment->setUser($user);
+        // if user is logged
+        if ($user = $this->getUser()){
+            $comment = new Comment();
+            $comment->setPost($post);
+            $comment->setUser($user);
 
-        $form = $this->createForm(CommentType::class, $comment);
-        $form->handleRequest($request);
+            $form = $this->createForm(CommentType::class, $comment);
+            $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $this->getDoctrine()->getManager()->persist($comment);
-            $this->getDoctrine()->getManager()->flush();
-            $this->addFlash('Success', 'Comment is successfully added');
+            if ($form->isSubmitted() && $form->isValid()) {
+                $this->getDoctrine()->getManager()->persist($comment);
+                $this->getDoctrine()->getManager()->flush();
+                $this->addFlash('Success', 'Comment is successfully added');
 
-            return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+                return $this->redirectToRoute('post_show', array('id' => $post->getId()));
+            }
+
         }
-
 
 
         return $this->render('earthquakes/show.html.twig', array(
             'post' => $post,
-            'form' => $form->createView()
+            'form' => is_null($form) ? $form : $form->createView()
         ));
     }
 }

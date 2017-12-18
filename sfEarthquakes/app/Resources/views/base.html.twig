@@ -7,18 +7,41 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
         {% block stylesheets %}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+            <link rel="stylesheet", href="{{ asset('css/navBar.css') }}">
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
 
-        <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+        <nav class="navbar navbar-toggleable-md navbar-expand-md navbar-inverse navbar-custom fixed-top">
             <a class="navbar-brand" href="/">World Earthquakes Map</a>
+
+            <ul class="navbar-nav ml-auto">
+
+                {% if app.user %}
+                <li class="nav-item">
+                    <a class="nav-link">Logged as {{ app.user }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Log out</a>
+                </li>
+                {% else %}
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_security_login') }}">Log in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ path('fos_user_registration_register') }}">Sign in</a>
+                    </li>
+                {% endif %}
+
+
+            </ul>
         </nav>
 
 
 
         <div class="container">
+
 
             {% block javascripts %}{% endblock %}
 

@@ -6,15 +6,19 @@
     <h1>{{ post.title }}</h1>
 
 
+
   <div>
       <font size=2 color = gray>
-          <p> Dodano: {{ post.createdAt }}</p>
+          <p> Added: {{ post.createdAt }}</p>
       </font>
+
+      <div class="col-xs-12" style="height:30px;"></div>
 
       <p> {{ post.content }} </p>
 
           <hr/>
 
+      <div class="col-xs-12" style="height:30px;"></div>
       <h3>Comments</h3>
 
       {% if app.user %}
@@ -30,16 +34,22 @@
           <div class="col-xs-12" style="height:50px;"></div>
 
       {% else %}
-         <p class="red-text text-center">Users must be logged in to comment.<a href="{{ path('fos_user_security_login') }}"> Log in</a></p>
-
+         <div class="col-xs-12" style="height:30px;"></div>
+         <p class="text-center">Users must be logged in to comment.<a href="{{ path('fos_user_security_login') }}"> Log in</a></p>
+         <div class="col-xs-12" style="height:30px;"></div>
       {% endif %}
+
+      <style type="text/css">
+          p {margin-bottom: 0.1em;  margin-top: 0em;}
+      </style>
 
       {% for comment in post.comments %}
 
           <div>
               <p>{{ comment.content }}</p>
               <font size=2 color="gray">
-                  <p> Dodano: {{ comment.createdAt }}</p>
+                  <p> From: {{ comment.user }}</p>
+                  <p> Added: {{ comment.createdAt }}</p>
               </font>
 
           </div>
