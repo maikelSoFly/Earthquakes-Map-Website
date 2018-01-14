@@ -17,7 +17,6 @@ class EarthquakesController extends Controller
      */
     public function indexAction(Request $request)
     {
-
         $qb = $this->getDoctrine()
             ->getManager()
             ->createQueryBuilder();
@@ -28,15 +27,12 @@ class EarthquakesController extends Controller
             ->orderBy('p.createdAt', 'DESC');
 
 
-
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
           $qb,
           $request->query->get('page', 1),
           5
         );
-
-
 
         return $this->render('earthquakes/index.html.twig', array(
             'posts' => $pagination,
@@ -51,6 +47,7 @@ class EarthquakesController extends Controller
      */
     public function showAction(Post $post, Request $request) {
         $form = null;
+        $ruid = $post->getRegionId();
 
         // if user is logged
         if ($user = $this->getUser()){
@@ -68,12 +65,12 @@ class EarthquakesController extends Controller
 
                 return $this->redirectToRoute('post_show', array('id' => $post->getId()));
             }
-
         }
 
         return $this->render('earthquakes/show.html.twig', array(
             'post' => $post,
-            'form' => is_null($form) ? $form : $form->createView()
+            'form' => is_null($form) ? $form : $form->createView(),
+            'regionID' => $ruid
         ));
     }
 
@@ -85,14 +82,12 @@ class EarthquakesController extends Controller
             ->getManager()
             ->createQueryBuilder();
 
-
-
+        
         $qb->select('p')
             ->from('AppBundle:Post', 'p')
             ->where('p.regionId = :regionID')
             ->setParameter('regionID', $ruid)
             ->orderBy('p.createdAt', 'DESC');
-
 
 
         $paginator = $this->get('knp_paginator');

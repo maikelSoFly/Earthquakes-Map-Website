@@ -14,7 +14,7 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body onload="regionID = {{ regionID }}">
+    <body {% if regionID is defined %} onload="regionID = {{ regionID }}" {% endif %}>
 
 
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
@@ -28,25 +28,25 @@
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item {% if regionID == -1 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == -1 %}active{% endif %}">
                     <a class="nav-link" href="/">World</a>
                 </li>
-                <li class="nav-item {% if regionID == 0 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == 0 %}active{% endif %}">
                     <a class="nav-link" href="{{ path('region_show', {'ruid': 0}) }}">Europe</a>
                 </li>
-                <li class="nav-item {% if regionID == 1 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == 1 %}active{% endif %}">
                     <a class="nav-link" href="{{ path('region_show', {'ruid': 1}) }}">Asia</a>
                 </li>
-                <li class="nav-item {% if regionID == 2 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == 2 %}active{% endif %}">
                     <a class="nav-link" href="{{ path('region_show', {'ruid': 2}) }}">North America</a>
                 </li>
-                <li class="nav-item {% if regionID == 3 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == 3 %}active{% endif %}">
                     <a class="nav-link" href="{{ path('region_show', {'ruid': 3}) }}">South America</a>
                 </li>
-                <li class="nav-item {% if regionID == 4 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == 4 %}active{% endif %}">
                     <a class="nav-link" href="{{ path('region_show', {'ruid': 4}) }}">Africa</a>
                 </li>
-                <li class="nav-item {% if regionID == 5 %}active{% endif %}">
+                <li class="nav-item {% if regionID is defined and regionID == 5 %}active{% endif %}">
                     <a class="nav-link" href="{{ path('region_show', {'ruid': 5}) }}">Australia</a>
                 </li>
             </ul>
@@ -55,7 +55,7 @@
                 <form class="form-inline">
                     <a class="btn btn-primary btn btn-outline-primary" href="#" role="button">{{ app.user }}'s profile</a>
                     {% if is_granted('ROLE_ADMIN') %}
-                    <a class="btn btn-primary btn btn-outline-warning" href="{{ path("admin") }}" role="button">Admin panel</a>
+                        <a class="btn btn-primary btn btn-outline-warning" href="{{ path("admin") }}" role="button">Admin panel</a>
                     {% endif %}
                     <a class="btn btn-primary btn btn-outline-danger" href="{{ path("fos_user_security_logout") }}" role="button">Log out</a>
                 </form>
@@ -70,20 +70,6 @@
 
         </div>
     </nav>
-
-
-    <div class="mapCanvas">
-        {% block sketchScripts %}
-            <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
-            <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
-            <script src="js/sketch.js"></script>
-
-        {%  endblock sketchScripts %}
-
-        <div id="sketch-holder">
-
-        </div>
-    </div>
 
 
 

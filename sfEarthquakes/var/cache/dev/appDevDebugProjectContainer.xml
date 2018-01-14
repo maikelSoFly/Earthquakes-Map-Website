@@ -795,7 +795,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>teWITjKuAeOhRHno7lhZhn</argument>
+      <argument>GdF9jvLIs3XnH7mUINb68j</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -805,7 +805,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>teWITjKuAeOhRHno7lhZhn</argument>
+      <argument>GdF9jvLIs3XnH7mUINb68j</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -3301,12 +3301,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a5b9cda222fb6.41010282</argument>
+      <argument>5a5bb845b58547.62305085</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a5b9cda222fb6.41010282</argument>
+      <argument>5a5bb845b58547.62305085</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3514,6 +3514,10 @@
         <argument>KnpPaginator</argument>
       </call>
       <call method="addPath">
+        <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/app/Resources/FOSUserBundle/views</argument>
+        <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
@@ -3667,6 +3671,10 @@
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/views</argument>
         <argument>KnpPaginator</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/app/Resources/FOSUserBundle/views</argument>
+        <argument>FOSUser</argument>
       </call>
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
@@ -5139,7 +5147,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>GYiBaPV+9Z</argument>
       <argument>0</argument>
-      <argument>teWITjKuAeOhRHno7lhZhn</argument>
+      <argument>GdF9jvLIs3XnH7mUINb68j</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -5147,7 +5155,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>Z-FFhyGPbr</argument>
       <argument>0</argument>
-      <argument>teWITjKuAeOhRHno7lhZhn</argument>
+      <argument>GdF9jvLIs3XnH7mUINb68j</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -5155,7 +5163,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>zp2OLi7rb4</argument>
       <argument>0</argument>
-      <argument>teWITjKuAeOhRHno7lhZhn</argument>
+      <argument>GdF9jvLIs3XnH7mUINb68j</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -5163,7 +5171,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>YDeP7SBZYM</argument>
       <argument>0</argument>
-      <argument>teWITjKuAeOhRHno7lhZhn</argument>
+      <argument>GdF9jvLIs3XnH7mUINb68j</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

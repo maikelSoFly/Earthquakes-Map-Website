@@ -5,6 +5,38 @@
 
 
 {% block body %}
+
+
+
+
+
+    <div class="mapCanvas">
+        {% block sketchScripts %}
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/p5.js"></script>
+            <script src="http://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.6/addons/p5.dom.js"></script>
+            <script src="js/sketch.js"></script>
+
+        {%  endblock sketchScripts %}
+
+        <div id="sketch-holder">
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     <link rel="stylesheet", href="{{ asset('css/posts.css') }}">
 
     <hr/>

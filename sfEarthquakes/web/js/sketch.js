@@ -43,7 +43,7 @@ function preload() {
 
     switch (regionID) {
         case -1:
-            zoom = 1.0
+            zoom = 1.3
             break;
         case 0:
             centerLatitudeDegrees = 53.5775
