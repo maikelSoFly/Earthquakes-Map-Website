@@ -18,6 +18,7 @@
       <parameter key="SensioFrameworkExtraBundle">Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle</parameter>
       <parameter key="KnpPaginatorBundle">Knp\Bundle\PaginatorBundle\KnpPaginatorBundle</parameter>
       <parameter key="FOSUserBundle">FOS\UserBundle\FOSUserBundle</parameter>
+      <parameter key="EasyAdminBundle">EasyCorp\Bundle\EasyAdminBundle\EasyAdminBundle</parameter>
       <parameter key="AppBundle">AppBundle\AppBundle</parameter>
       <parameter key="DebugBundle">Symfony\Bundle\DebugBundle\DebugBundle</parameter>
       <parameter key="WebProfilerBundle">Symfony\Bundle\WebProfilerBundle\WebProfilerBundle</parameter>
@@ -72,6 +73,11 @@
         <parameter key="path">/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle</parameter>
         <parameter key="namespace">FOS\UserBundle</parameter>
       </parameter>
+      <parameter key="EasyAdminBundle" type="collection">
+        <parameter key="parent">null</parameter>
+        <parameter key="path">/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src</parameter>
+        <parameter key="namespace">EasyCorp\Bundle\EasyAdminBundle</parameter>
+      </parameter>
       <parameter key="AppBundle" type="collection">
         <parameter key="parent">null</parameter>
         <parameter key="path">/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/src/AppBundle</parameter>
@@ -110,11 +116,12 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
+    <parameter key="database_driver">pdo_mysql</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
-    <parameter key="database_port">3306</parameter>
+    <parameter key="database_port">8889</parameter>
     <parameter key="database_name">sf_earthquakes</parameter>
     <parameter key="database_user">root</parameter>
-    <parameter key="database_password">null</parameter>
+    <parameter key="database_password">root</parameter>
     <parameter key="mailer_transport">smtp</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -408,6 +415,85 @@
       <parameter>ResetPassword</parameter>
       <parameter>Default</parameter>
     </parameter>
+    <parameter key="easyadmin.config" type="collection">
+      <parameter key="entities" type="collection">
+        <parameter key="Post" type="collection">
+          <parameter key="class">AppBundle\Entity\Post</parameter>
+          <parameter key="name">Post</parameter>
+        </parameter>
+        <parameter key="Comment" type="collection">
+          <parameter key="class">AppBundle\Entity\Comment</parameter>
+          <parameter key="name">Comment</parameter>
+        </parameter>
+      </parameter>
+      <parameter key="list" type="collection">
+        <parameter key="actions" type="collection">
+          <parameter type="collection">
+            <parameter key="name">show</parameter>
+            <parameter key="icon">search</parameter>
+            <parameter key="label">Show</parameter>
+          </parameter>
+          <parameter type="collection">
+            <parameter key="name">edit</parameter>
+            <parameter key="icon">pencil</parameter>
+            <parameter key="label">Edit</parameter>
+          </parameter>
+          <parameter type="collection">
+            <parameter key="name">delete</parameter>
+            <parameter key="icon">false</parameter>
+            <parameter key="label">Delete</parameter>
+          </parameter>
+          <parameter type="collection">
+            <parameter key="name">new</parameter>
+            <parameter key="icon">false</parameter>
+            <parameter key="label">New</parameter>
+          </parameter>
+          <parameter type="collection">
+            <parameter key="name">search</parameter>
+            <parameter key="icon">false</parameter>
+            <parameter key="label">Search</parameter>
+          </parameter>
+        </parameter>
+        <parameter key="max_results">15</parameter>
+      </parameter>
+      <parameter key="design" type="collection">
+        <parameter key="assets" type="collection">
+          <parameter key="css" type="collection"/>
+          <parameter key="js" type="collection"/>
+          <parameter key="favicon" type="collection">
+            <parameter key="path">favicon.ico</parameter>
+            <parameter key="mime_type">image/x-icon</parameter>
+          </parameter>
+        </parameter>
+        <parameter key="theme">default</parameter>
+        <parameter key="color_scheme">dark</parameter>
+        <parameter key="brand_color">#205081</parameter>
+        <parameter key="form_theme" type="collection">
+          <parameter>@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig</parameter>
+        </parameter>
+        <parameter key="menu" type="collection"/>
+      </parameter>
+      <parameter key="site_name">EasyAdmin</parameter>
+      <parameter key="formats" type="collection">
+        <parameter key="date">Y-m-d</parameter>
+        <parameter key="time">H:i:s</parameter>
+        <parameter key="datetime">F j, Y H:i</parameter>
+      </parameter>
+      <parameter key="disabled_actions" type="collection"/>
+      <parameter key="translation_domain">messages</parameter>
+      <parameter key="search" type="collection"/>
+      <parameter key="edit" type="collection">
+        <parameter key="actions" type="collection"/>
+      </parameter>
+      <parameter key="new" type="collection">
+        <parameter key="actions" type="collection"/>
+      </parameter>
+      <parameter key="show" type="collection">
+        <parameter key="actions" type="collection"/>
+        <parameter key="max_results">10</parameter>
+      </parameter>
+    </parameter>
+    <parameter key="easyadmin.cache.dir">/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/easy_admin</parameter>
     <parameter key="web_profiler.debug_toolbar.position">bottom</parameter>
     <parameter key="web_profiler.debug_toolbar.intercept_redirects">false</parameter>
     <parameter key="web_profiler.debug_toolbar.mode">2</parameter>
@@ -476,6 +562,10 @@
         <parameter>dump</parameter>
         <parameter>@Debug/Profiler/dump.html.twig</parameter>
       </parameter>
+      <parameter key="easyadmin.data_collector" type="collection">
+        <parameter>easyadmin</parameter>
+        <parameter>@EasyAdmin/data_collector/easyadmin.html.twig</parameter>
+      </parameter>
       <parameter key="data_collector.config" type="collection">
         <parameter>config</parameter>
         <parameter>@WebProfiler/Collector/config.html.twig</parameter>
@@ -541,7 +631,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-50"/>
-      <argument type="service" id="service_locator.e3c89075a4eccbd36e85664c5395d96e"/>
+      <argument type="service" id="service_locator.b4fbcf92ea87bfab5177e386f12d7863"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false">
       <tag name="controller.argument_value_resolver" priority="-100"/>
@@ -705,7 +795,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>tIS565jNpG1lAXbTwgwx93</argument>
+      <argument>teWITjKuAeOhRHno7lhZhn</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -715,7 +805,7 @@
       <tag name="monolog.logger" channel="cache"/>
       <argument></argument>
       <argument>0</argument>
-      <argument>tIS565jNpG1lAXbTwgwx93</argument>
+      <argument>teWITjKuAeOhRHno7lhZhn</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
@@ -831,7 +921,7 @@
       <argument type="service" id="form.resolved_type_factory"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension" public="false">
-      <argument type="service" id="service_locator.f071cf1e30cc269b32ae10e04906e4b6"/>
+      <argument type="service" id="service_locator.adfc74e47d0989e6c69937b2f3954143"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.http_foundation"/>
@@ -839,6 +929,7 @@
           <argument type="service" id="form.type_extension.upload.validator"/>
           <argument type="service" id="form.type_extension.csrf"/>
           <argument type="service" id="form.type_extension.form.data_collector"/>
+          <argument type="service" id="easyadmin.form.type.extension"/>
         </argument>
         <argument key="Symfony\Component\Form\Extension\Core\Type\RepeatedType" type="iterator">
           <argument type="service" id="form.type_extension.repeated.validator"/>
@@ -850,6 +941,7 @@
       <argument type="iterator">
         <argument type="service" id="form.type_guesser.validator"/>
         <argument type="service" id="form.type_guesser.doctrine"/>
+        <argument type="service" id="easyadmin.form.guesser.missing_doctrine_orm_type_guesser"/>
       </argument>
       <argument>null</argument>
     </service>
@@ -1225,12 +1317,16 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.cs.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.cs.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.cs.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.cs.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.cs.xlf</argument>
           </argument>
           <argument key="uk" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.uk.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.uk.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.uk.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.uk.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.uk.xlf</argument>
           </argument>
           <argument key="sr_Latn" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf</argument>
@@ -1245,6 +1341,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.bg.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.bg.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.bg.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.bg.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.bg.xlf</argument>
           </argument>
           <argument key="th" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.th.xlf</argument>
@@ -1258,6 +1356,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ca.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ca.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ca.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ca.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.ca.xlf</argument>
           </argument>
           <argument key="sk" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf</argument>
@@ -1273,6 +1373,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ro.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ro.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ro.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.ro.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ro.xlf</argument>
           </argument>
           <argument key="pt_BR" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf</argument>
@@ -1295,12 +1397,16 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hu.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hu.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hu.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.hu.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.hu.xlf</argument>
           </argument>
           <argument key="fi" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fi.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fi.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.fi.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.fi.xlf</argument>
           </argument>
           <argument key="da" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf</argument>
@@ -1321,6 +1427,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.es.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.es.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.es.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.es.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.es.xlf</argument>
           </argument>
           <argument key="it" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
@@ -1329,6 +1437,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.it.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.it.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.it.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.it.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.it.xlf</argument>
           </argument>
           <argument key="sl" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
@@ -1336,6 +1446,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sl.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sl.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sl.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.sl.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.sl.xlf</argument>
           </argument>
           <argument key="de" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
@@ -1344,6 +1456,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.de.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.de.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.de.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.de.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.de.xlf</argument>
           </argument>
           <argument key="et" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
@@ -1355,12 +1469,16 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.pt.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.pt.xlf</argument>
           </argument>
           <argument key="eu" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.eu.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.eu.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.eu.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.eu.xlf</argument>
           </argument>
           <argument key="hr" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf</argument>
@@ -1368,6 +1486,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hr.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hr.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hr.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.hr.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.hr.xlf</argument>
           </argument>
           <argument key="he" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf</argument>
@@ -1382,6 +1502,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.zh_CN.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.zh_CN.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.zh_CN.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.zh_CN.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.zh_CN.xlf</argument>
           </argument>
           <argument key="en" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
@@ -1390,6 +1512,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.en.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.en.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.en.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.en.xlf</argument>
           </argument>
           <argument key="ja" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
@@ -1411,6 +1535,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sv.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sv.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sv.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.sv.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.sv.xlf</argument>
           </argument>
           <argument key="pl" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
@@ -1419,6 +1545,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.pl.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pl.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pl.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.pl.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.pl.xlf</argument>
           </argument>
           <argument key="fa" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf</argument>
@@ -1438,6 +1566,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.fr.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.fr.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.fr.xlf</argument>
           </argument>
           <argument key="zh_TW" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf</argument>
@@ -1457,6 +1587,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.ru.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ru.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ru.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ru.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.ru.xlf</argument>
           </argument>
           <argument key="lt" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
@@ -1471,6 +1603,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.tr.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.tr.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.tr.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.tr.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.tr.xlf</argument>
           </argument>
           <argument key="ar" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf</argument>
@@ -1478,6 +1612,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ar.xlf</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ar.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ar.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.ar.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.ar.xlf</argument>
           </argument>
           <argument key="lb" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf</argument>
@@ -1506,6 +1642,8 @@
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/knplabs/knp-paginator-bundle/Resources/translations/KnpPaginatorBundle.nl.xliff</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nl.yml</argument>
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nl.yml</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/EasyAdminBundle.nl.xlf</argument>
+            <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/translations/messages.nl.xlf</argument>
           </argument>
           <argument key="nn" type="collection">
             <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
@@ -1789,6 +1927,9 @@
         <argument type="service" id="data_collector.dump"/>
       </call>
       <call method="add">
+        <argument type="service" id="easyadmin.data_collector"/>
+      </call>
+      <call method="add">
         <argument type="service" id="data_collector.config"/>
       </call>
     </service>
@@ -1929,6 +2070,22 @@
         <argument type="collection">
           <argument type="service" id="knp_paginator.subscriber.sliding_pagination"/>
           <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>kernel.controller</argument>
+        <argument type="collection">
+          <argument type="service" id="easyadmin.listener.controller"/>
+          <argument>onKernelController</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>easy_admin.post_initialize</argument>
+        <argument type="collection">
+          <argument type="service" id="easyadmin.listener.request_post_initialize"/>
+          <argument>initializeRequest</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -3144,12 +3301,12 @@
     </service>
     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
       <argument type="service" id="security.token_storage"/>
-      <argument>5a36ef986ecdd8.17250932</argument>
+      <argument>5a5b9cda222fb6.41010282</argument>
       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
       <argument type="service" id="security.authentication.manager"/>
     </service>
     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-      <argument>5a36ef986ecdd8.17250932</argument>
+      <argument>5a5b9cda222fb6.41010282</argument>
     </service>
     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
       <argument type="service" id="security.token_storage"/>
@@ -3276,6 +3433,9 @@
         <argument type="service" id="knp_paginator.twig.extension.pagination"/>
       </call>
       <call method="addExtension">
+        <argument type="service" id="easyadmin.twig.extension"/>
+      </call>
+      <call method="addExtension">
         <argument type="service" id="twig.extension.dump"/>
       </call>
       <call method="addExtension">
@@ -3356,6 +3516,10 @@
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views</argument>
+        <argument>EasyAdmin</argument>
       </call>
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
@@ -3507,6 +3671,10 @@
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
+      </call>
+      <call method="addPath">
+        <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/javiereguiluz/easyadmin-bundle/src/Resources/views</argument>
+        <argument>EasyAdmin</argument>
       </call>
       <call method="addPath">
         <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
@@ -3812,10 +3980,10 @@
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
-        <argument key="port">3306</argument>
+        <argument key="port">8889</argument>
         <argument key="dbname">sf_earthquakes</argument>
         <argument key="user">root</argument>
-        <argument key="password">null</argument>
+        <argument key="password">root</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>
@@ -4281,6 +4449,249 @@
       <argument type="service" id="router.default"/>
       <argument>86400</argument>
     </service>
+    <service id="easyadmin.cache.manager" class="EasyCorp\Bundle\EasyAdminBundle\Cache\CacheManager">
+      <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/easy_admin</argument>
+    </service>
+    <service id="easyadmin.config.manager" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\ConfigManager">
+      <argument type="service" id="easyadmin.cache.manager"/>
+      <argument type="service" id="property_accessor"/>
+      <argument type="collection">
+        <argument key="entities" type="collection">
+          <argument key="Post" type="collection">
+            <argument key="class">AppBundle\Entity\Post</argument>
+            <argument key="name">Post</argument>
+          </argument>
+          <argument key="Comment" type="collection">
+            <argument key="class">AppBundle\Entity\Comment</argument>
+            <argument key="name">Comment</argument>
+          </argument>
+        </argument>
+        <argument key="list" type="collection">
+          <argument key="actions" type="collection">
+            <argument type="collection">
+              <argument key="name">show</argument>
+              <argument key="icon">search</argument>
+              <argument key="label">Show</argument>
+            </argument>
+            <argument type="collection">
+              <argument key="name">edit</argument>
+              <argument key="icon">pencil</argument>
+              <argument key="label">Edit</argument>
+            </argument>
+            <argument type="collection">
+              <argument key="name">delete</argument>
+              <argument key="icon">false</argument>
+              <argument key="label">Delete</argument>
+            </argument>
+            <argument type="collection">
+              <argument key="name">new</argument>
+              <argument key="icon">false</argument>
+              <argument key="label">New</argument>
+            </argument>
+            <argument type="collection">
+              <argument key="name">search</argument>
+              <argument key="icon">false</argument>
+              <argument key="label">Search</argument>
+            </argument>
+          </argument>
+          <argument key="max_results">15</argument>
+        </argument>
+        <argument key="design" type="collection">
+          <argument key="assets" type="collection">
+            <argument key="css" type="collection"/>
+            <argument key="js" type="collection"/>
+            <argument key="favicon" type="collection">
+              <argument key="path">favicon.ico</argument>
+              <argument key="mime_type">image/x-icon</argument>
+            </argument>
+          </argument>
+          <argument key="theme">default</argument>
+          <argument key="color_scheme">dark</argument>
+          <argument key="brand_color">#205081</argument>
+          <argument key="form_theme" type="collection">
+            <argument>@EasyAdmin/form/bootstrap_3_horizontal_layout.html.twig</argument>
+          </argument>
+          <argument key="menu" type="collection"/>
+        </argument>
+        <argument key="site_name">EasyAdmin</argument>
+        <argument key="formats" type="collection">
+          <argument key="date">Y-m-d</argument>
+          <argument key="time">H:i:s</argument>
+          <argument key="datetime">F j, Y H:i</argument>
+        </argument>
+        <argument key="disabled_actions" type="collection"/>
+        <argument key="translation_domain">messages</argument>
+        <argument key="search" type="collection"/>
+        <argument key="edit" type="collection">
+          <argument key="actions" type="collection"/>
+        </argument>
+        <argument key="new" type="collection">
+          <argument key="actions" type="collection"/>
+        </argument>
+        <argument key="show" type="collection">
+          <argument key="actions" type="collection"/>
+          <argument key="max_results">10</argument>
+        </argument>
+      </argument>
+      <argument>true</argument>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.normalizer_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.design_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.menu_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.action_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.metadata_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.property_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.view_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.template_config_pass"/>
+      </call>
+      <call method="addConfigPass">
+        <argument type="service" id="easyadmin.configuration.default_config_pass"/>
+      </call>
+    </service>
+    <service id="easyadmin.query_builder" class="EasyCorp\Bundle\EasyAdminBundle\Search\QueryBuilder">
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="easyadmin.finder" class="EasyCorp\Bundle\EasyAdminBundle\Search\Finder" public="false">
+      <argument type="service" id="easyadmin.query_builder"/>
+      <argument type="service" id="easyadmin.paginator"/>
+    </service>
+    <service id="easyadmin.autocomplete" class="EasyCorp\Bundle\EasyAdminBundle\Search\Autocomplete">
+      <argument type="service" id="easyadmin.config.manager"/>
+      <argument type="service" id="easyadmin.finder"/>
+      <argument type="service" id="property_accessor"/>
+    </service>
+    <service id="easyadmin.paginator" class="EasyCorp\Bundle\EasyAdminBundle\Search\Paginator"/>
+    <service id="easyadmin.router" class="EasyCorp\Bundle\EasyAdminBundle\Router\EasyAdminRouter">
+      <argument type="service" id="easyadmin.config.manager"/>
+      <argument type="service" id="router.default"/>
+      <argument type="service" id="property_accessor"/>
+      <argument type="service" id="request_stack" on-invalid="null"/>
+    </service>
+    <service id="easyadmin.twig.extension" class="EasyCorp\Bundle\EasyAdminBundle\Twig\EasyAdminTwigExtension" public="false">
+      <tag name="twig.extension"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+      <argument type="service" id="property_accessor"/>
+      <argument type="service" id="easyadmin.router"/>
+      <argument>true</argument>
+      <argument type="service" id="security.logout_url_generator" on-invalid="null"/>
+    </service>
+    <service id="easyadmin.listener.controller" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\ControllerListener">
+      <tag name="kernel.event_listener" event="kernel.controller" method="onKernelController"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+      <argument type="service" id="debug.controller_resolver"/>
+    </service>
+    <service id="easyadmin.listener.request_post_initialize" class="EasyCorp\Bundle\EasyAdminBundle\EventListener\RequestPostInitializeListener">
+      <tag name="kernel.event_listener" event="easy_admin.post_initialize" method="initializeRequest"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="request_stack" on-invalid="null"/>
+    </service>
+    <service id="easyadmin.data_collector" class="EasyCorp\Bundle\EasyAdminBundle\DataCollector\EasyAdminDataCollector" public="false">
+      <tag name="data_collector" template="@EasyAdmin/data_collector/easyadmin.html.twig" id="easyadmin"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+    </service>
+    <service id="easyadmin.configuration.normalizer_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\NormalizerConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="90"/>
+      <argument type="service" id="service_container"/>
+    </service>
+    <service id="easyadmin.configuration.design_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\DesignConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="80"/>
+      <argument type="service" id="service_container"/>
+      <argument>true</argument>
+      <argument>pl</argument>
+    </service>
+    <service id="easyadmin.configuration.menu_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\MenuConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="70"/>
+    </service>
+    <service id="easyadmin.configuration.action_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\ActionConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="60"/>
+    </service>
+    <service id="easyadmin.configuration.metadata_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\MetadataConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="50"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="easyadmin.configuration.property_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\PropertyConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="40"/>
+      <argument type="service" id="form.registry"/>
+    </service>
+    <service id="easyadmin.configuration.view_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\ViewConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="30"/>
+    </service>
+    <service id="easyadmin.configuration.template_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\TemplateConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="20"/>
+      <argument type="service" id="twig.loader.filesystem"/>
+    </service>
+    <service id="easyadmin.configuration.default_config_pass" class="EasyCorp\Bundle\EasyAdminBundle\Configuration\DefaultConfigPass" public="false">
+      <tag name="easyadmin.config_pass" priority="10"/>
+    </service>
+    <service id="easyadmin.form.type" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType">
+      <tag name="form.type"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+      <argument type="collection">
+        <argument key="4" type="service" id="easyadmin.form.type.configurator.autocomplete"/>
+        <argument key="3" type="service" id="easyadmin.form.type.configurator.collection"/>
+        <argument key="2" type="service" id="easyadmin.form.type.configurator.checkbox"/>
+        <argument key="1" type="service" id="easyadmin.form.type.configurator.type"/>
+        <argument key="0" type="service" id="easyadmin.form.type.configurator.entity"/>
+      </argument>
+    </service>
+    <service id="easyadmin.form.type.autocomplete" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType">
+      <tag name="form.type" alias="easyadmin_autocomplete"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+    </service>
+    <service id="easyadmin.form.type.divider" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType">
+      <tag name="form.type" alias="easyadmin_divider"/>
+    </service>
+    <service id="easyadmin.form.type.section" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType">
+      <tag name="form.type" alias="easyadmin_section"/>
+    </service>
+    <service id="easyadmin.form.type.group" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType">
+      <tag name="form.type" alias="easyadmin_group"/>
+    </service>
+    <service id="easyadmin.form.type.extension" class="EasyCorp\Bundle\EasyAdminBundle\Form\Extension\EasyAdminExtension">
+      <tag name="form.type_extension" alias="form" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+      <argument type="service" id="request_stack" on-invalid="null"/>
+    </service>
+    <service id="easyadmin.form.type_guesser_chain" class="Symfony\Component\Form\FormTypeGuesserChain" public="false">
+      <argument type="collection">
+        <argument type="service" id="form.type_guesser.validator"/>
+        <argument type="service" id="form.type_guesser.doctrine"/>
+        <argument type="service" id="easyadmin.form.guesser.missing_doctrine_orm_type_guesser"/>
+      </argument>
+    </service>
+    <service id="easyadmin.form.type.configurator.autocomplete" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\AutocompleteTypeConfigurator" public="false">
+      <tag name="easyadmin.form.type.configurator" priority="30"/>
+    </service>
+    <service id="easyadmin.form.type.configurator.collection" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CollectionTypeConfigurator" public="false">
+      <tag name="easyadmin.form.type.configurator" priority="20"/>
+    </service>
+    <service id="easyadmin.form.type.configurator.checkbox" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\CheckboxTypeConfigurator" public="false">
+      <tag name="easyadmin.form.type.configurator" priority="10"/>
+    </service>
+    <service id="easyadmin.form.type.configurator.type" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\TypeConfigurator" public="false">
+      <tag name="easyadmin.form.type.configurator" priority="0"/>
+      <argument type="service" id="easyadmin.config.manager"/>
+    </service>
+    <service id="easyadmin.form.type.configurator.entity" class="EasyCorp\Bundle\EasyAdminBundle\Form\Type\Configurator\EntityTypeConfigurator" public="false">
+      <tag name="easyadmin.form.type.configurator" priority="-20"/>
+    </service>
+    <service id="easyadmin.form.guesser.missing_doctrine_orm_type_guesser" class="EasyCorp\Bundle\EasyAdminBundle\Form\Guesser\MissingDoctrineOrmTypeGuesser">
+      <tag name="form.type_guesser"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="twig.extension.dump" class="Symfony\Bridge\Twig\Extension\DumpExtension" public="false">
       <tag name="twig.extension"/>
       <argument type="service" id="var_dumper.cloner"/>
@@ -4403,6 +4814,10 @@
           <argument>dump</argument>
           <argument>@Debug/Profiler/dump.html.twig</argument>
         </argument>
+        <argument key="easyadmin.data_collector" type="collection">
+          <argument>easyadmin</argument>
+          <argument>@EasyAdmin/data_collector/easyadmin.html.twig</argument>
+        </argument>
         <argument key="data_collector.config" type="collection">
           <argument>config</argument>
           <argument>@WebProfiler/Collector/config.html.twig</argument>
@@ -4477,7 +4892,7 @@
         <argument key="post" type="service" id="autowired.AppBundle\Entity\Post"/>
       </argument>
     </service>
-    <service id="service_locator.e3c89075a4eccbd36e85664c5395d96e" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.b4fbcf92ea87bfab5177e386f12d7863" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Controller\EarthquakesController:showAction" type="service" id="service_locator.4858b96f96d7893a4aafc25b963bd470"/>
@@ -4500,10 +4915,15 @@
         <argument key="translation.loader.yml" type="service" id="translation.loader.yml"/>
       </argument>
     </service>
-    <service id="service_locator.f071cf1e30cc269b32ae10e04906e4b6" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id="service_locator.adfc74e47d0989e6c69937b2f3954143" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="AppBundle\Form\CommentType" type="service" id="AppBundle\Form\CommentType"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminAutocompleteType" type="service" id="easyadmin.form.type.autocomplete"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminDividerType" type="service" id="easyadmin.form.type.divider"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminFormType" type="service" id="easyadmin.form.type"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminGroupType" type="service" id="easyadmin.form.type.group"/>
+        <argument key="EasyCorp\Bundle\EasyAdminBundle\Form\Type\EasyAdminSectionType" type="service" id="easyadmin.form.type.section"/>
         <argument key="FOS\UserBundle\Form\Type\ChangePasswordFormType" type="service" id="fos_user.change_password.form.type"/>
         <argument key="FOS\UserBundle\Form\Type\ProfileFormType" type="service" id="fos_user.profile.form.type"/>
         <argument key="FOS\UserBundle\Form\Type\RegistrationFormType" type="service" id="fos_user.registration.form.type"/>
@@ -4719,7 +5139,7 @@
     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>GYiBaPV+9Z</argument>
       <argument>0</argument>
-      <argument>tIS565jNpG1lAXbTwgwx93</argument>
+      <argument>teWITjKuAeOhRHno7lhZhn</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4727,7 +5147,7 @@
     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>Z-FFhyGPbr</argument>
       <argument>0</argument>
-      <argument>tIS565jNpG1lAXbTwgwx93</argument>
+      <argument>teWITjKuAeOhRHno7lhZhn</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4735,7 +5155,7 @@
     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>zp2OLi7rb4</argument>
       <argument>0</argument>
-      <argument>tIS565jNpG1lAXbTwgwx93</argument>
+      <argument>teWITjKuAeOhRHno7lhZhn</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -4743,7 +5163,7 @@
     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
       <argument>YDeP7SBZYM</argument>
       <argument>0</argument>
-      <argument>tIS565jNpG1lAXbTwgwx93</argument>
+      <argument>teWITjKuAeOhRHno7lhZhn</argument>
       <argument>/Users/maikel/Documents/code/Php/EarthquakeWebsite/sfEarthquakes/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>

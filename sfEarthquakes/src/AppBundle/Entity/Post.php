@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Post
@@ -29,6 +30,29 @@ class Post
     private $title;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(name="regionId", type="integer")
+     */
+    private $regionId;
+
+    /**
+     * @return int
+     */
+    public function getRegionId()
+    {
+        return $this->regionId;
+    }
+
+    /**
+     * @param int $regionId
+     */
+    public function setRegionId($regionId)
+    {
+        $this->regionId = $regionId;
+    }
+
+    /**
      * @var string
      *
      * @ORM\Column(name="content", type="text", nullable=true)
@@ -39,6 +63,7 @@ class Post
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdAt;
 
@@ -48,6 +73,15 @@ class Post
      * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      */
     private $comments;
+
+    /**
+     * @var
+     *
+     * @ORM\ManyToOne(targetEntity="Region", inversedBy="posts", cascade={"persist"})
+     */
+    private $region;
+
+
 
     public function __toString()
     {
@@ -64,6 +98,16 @@ class Post
     public function getId()
     {
         return $this->id;
+    }
+
+    /**
+     * Get region
+     *
+     * @return \AppBundle\Entity\Region
+     */
+    public function getRegion()
+    {
+        return $this->region;
     }
 
     /**
@@ -117,12 +161,28 @@ class Post
     /**
      * Set createdAt
      *
-     * @param \DateTime $createdAt
+     * @param string $createdAt
      *
      * @return Post
      */
     public function setCreatedAt($createdAt)
     {
+
+        $this->createdAt = new \DateTime($createdAt);
+
+        return $this;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     *
+     * @return Post
+     */
+    public function setCreatedAtD($createdAt)
+    {
+
         $this->createdAt = $createdAt;
 
         return $this;
@@ -143,6 +203,21 @@ class Post
     public function __construct()
     {
         $this->comments = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->createdAt = new \DateTime('now');
+    }
+
+    /**
+     * Set region
+     *
+     * @param \AppBundle\Entity\Region $region
+     *
+     * @return Post
+     */
+    public function setRegion(\AppBundle\Entity\Region $region = null)
+    {
+        $this->region = $region;
+
+        return $this;
     }
 
     /**

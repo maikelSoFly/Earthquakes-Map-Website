@@ -1,0 +1,13 @@
+.post-title-bar {
+    background: rgb(25, 26, 26);
+    height: 100px;
+    /* This centers our sketch horizontally. */
+    line-height: 100px;
+    text-align: center;
+
+}
+
+h1 {
+    color: white;
+}
+

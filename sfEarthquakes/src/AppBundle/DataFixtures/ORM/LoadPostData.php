@@ -10,6 +10,7 @@ namespace AppBundle\DataFixtures\ORM;
 
 
 use AppBundle\Entity\Post;
+use AppBundle\Entity\Region;
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 
@@ -25,15 +26,24 @@ class LoadPostData implements FixtureInterface
     {
         $faker = \Faker\Factory::create();
 
-        for ($i = 0; $i < 1000; $i++) {
-            $post = new Post();
-            $post->setTitle($faker->sentence(3));
-            $post->setContent($faker->text(700));
-            $post->setCreatedAt($faker->dateTimeThisMonth());
-            $manager->persist($post);
+
+
+
+
+        for($i = 0; $i < 6; $i++) {
+            for ($j = 0; $j < 200; $j++) {
+                $post = new Post();
+                $post->setTitle($faker->sentence(3));
+                $post->setContent($faker->text(700));
+                $post->setCreatedAtD($faker->dateTimeThisMonth());
+                $post->setRegionId($i);
+                $manager->persist($post);
+            }
+
         }
 
-        $manager->flush();
 
+
+        $manager->flush();
     }
 }

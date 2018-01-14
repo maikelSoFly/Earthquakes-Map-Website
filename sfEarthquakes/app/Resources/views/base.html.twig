@@ -14,36 +14,49 @@
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
-    <body>
+    <body onload="regionID = {{ regionID }}">
 
 
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <a class="navbar-brand" href="/">Earthquake Map</a>
+        <a class="navbar-brand" href="/">
+            <img class="img-brand" src="{{ asset('images/iconmonstr-globe-5-240.png') }}" width="25" height="25" alt="">
+            Earthquakes Monitor
+        </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Europe</a>
+
+                <li class="nav-item {% if regionID == -1 %}active{% endif %}">
+                    <a class="nav-link" href="/">World</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Asia</a>
+                <li class="nav-item {% if regionID == 0 %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('region_show', {'ruid': 0}) }}">Europe</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">North America</a>
+                <li class="nav-item {% if regionID == 1 %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('region_show', {'ruid': 1}) }}">Asia</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">South America</a>
+                <li class="nav-item {% if regionID == 2 %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('region_show', {'ruid': 2}) }}">North America</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Australia</a>
+                <li class="nav-item {% if regionID == 3 %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('region_show', {'ruid': 3}) }}">South America</a>
+                </li>
+                <li class="nav-item {% if regionID == 4 %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('region_show', {'ruid': 4}) }}">Africa</a>
+                </li>
+                <li class="nav-item {% if regionID == 5 %}active{% endif %}">
+                    <a class="nav-link" href="{{ path('region_show', {'ruid': 5}) }}">Australia</a>
                 </li>
             </ul>
 
             {% if app.user %}
                 <form class="form-inline">
                     <a class="btn btn-primary btn btn-outline-primary" href="#" role="button">{{ app.user }}'s profile</a>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <a class="btn btn-primary btn btn-outline-warning" href="{{ path("admin") }}" role="button">Admin panel</a>
+                    {% endif %}
                     <a class="btn btn-primary btn btn-outline-danger" href="{{ path("fos_user_security_logout") }}" role="button">Log out</a>
                 </form>
 

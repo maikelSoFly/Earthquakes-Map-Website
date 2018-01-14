@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -32,6 +33,7 @@ class Comment
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
+     * @Assert\DateTime()
      */
     private $createdAt;
 
@@ -53,6 +55,10 @@ class Comment
     public function __construct()
     {
         $this->createdAt = new \DateTime('now');
+    }
+
+    public function __toString() {
+        return $this->getContent();
     }
 
 
@@ -107,7 +113,7 @@ class Comment
     /**
      * Get createdAt
      *
-     * @return \DateTime
+     * @return string
      */
     public function getCreatedAt()
     {

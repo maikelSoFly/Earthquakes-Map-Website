@@ -41,6 +41,43 @@ function preload() {
     WINDOW_WIDTH = windowWidth
     WINDOW_HEIGHT = round((9*WINDOW_WIDTH)/16);
 
+    switch (regionID) {
+        case -1:
+            zoom = 1.0
+            break;
+        case 0:
+            centerLatitudeDegrees = 53.5775
+            centerLongitudeDegrees = 23.106111
+            zoom = 3.1
+            break;
+        case 1:
+            centerLatitudeDegrees = 52.483333
+            centerLongitudeDegrees = 96.085833
+            zoom = 2.0
+            break;
+        case 2:
+            centerLatitudeDegrees = 47.115
+            centerLongitudeDegrees = -101.300278
+            zoom = 1.5
+            break;
+        case 3:
+            centerLatitudeDegrees = -15.595833
+            centerLongitudeDegrees = -56.096944
+            zoom = 2.0
+            break;
+        case 4:
+            centerLatitudeDegrees = 5.65
+            centerLongitudeDegrees = 26.17
+            zoom = 2.4
+            break;
+        case 5:
+            centerLatitudeDegrees = -23.116667
+            centerLongitudeDegrees = 132.133333
+            zoom = 2.5
+            break;
+        default:
+    }
+
     centerLongitude = mercX(centerLongitudeDegrees, zoom)
     centerLatitude = mercY(centerLatitudeDegrees, zoom)
 
@@ -60,9 +97,9 @@ function preload() {
 }
 
 function retrieveData(geocodingData) {
-    placeData.locality = geocodingData.features[0].context[0].text
-    placeData.place = geocodingData.features[0].context[1].text
-    placeData.country = geocodingData.features[0].context[3].text
+    // placeData.locality = geocodingData.features[0].context[0].text
+    // placeData.place = geocodingData.features[0].context[1].text
+    // placeData.country = geocodingData.features[0].context[3].text
 }
 
 function layout(mapi) {
@@ -145,12 +182,12 @@ function setup() {
     // pop()
 
     //MARK: - Center indicator.
-    if (zoom >= 3) {
-        push()
-        fill(255)
-        ellipse(0, 0, 10)
-        pop()
-    }
+    // if (zoom >= 3) {
+    //     push()
+    //     fill(255)
+    //     ellipse(0, 0, 10)
+    //     pop()
+    // }
 
 }
 
