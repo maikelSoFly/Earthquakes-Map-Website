@@ -48,7 +48,7 @@
           p {margin-bottom: 0.1em;  margin-top: 0em;}
       </style>
 
-      {% for comment in post.comments %}
+      {% for comment in post.comments|reverse %}
 
           <div class="commentFrame">
               <p>{{ comment.content }}</p>

@@ -15,11 +15,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EarthquakesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EarthquakesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EarthquakesController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-317">
-              <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+            <state relative-caret-position="134">
+              <caret line="52" column="38" lean-forward="false" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
               <folding>
                 <element signature="e#40#69#0#PHP" expanded="true" />
               </folding>
@@ -79,13 +79,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="false">
+      <file leaf-file-name="show.html.twig" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/earthquakes/show.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="54" column="102" lean-forward="false" selection-start-line="54" selection-start-column="102" selection-end-line="54" selection-end-column="102" />
+            <state relative-caret-position="269">
+              <caret line="50" column="45" lean-forward="false" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
               <folding>
-                <element signature="e#1417#1501#0#HTML" expanded="true" />
+                <element signature="e#1425#1509#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -181,9 +181,9 @@
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPostData.php" />
         <option value="$PROJECT_DIR$/web/css/post.css" />
-        <option value="$PROJECT_DIR$/app/Resources/views/earthquakes/show.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/earthquakes/index.html.twig" />
         <option value="$PROJECT_DIR$/web/css/posts.css" />
+        <option value="$PROJECT_DIR$/app/Resources/views/earthquakes/show.html.twig" />
       </list>
     </option>
   </component>
@@ -414,12 +414,12 @@
       <workItem from="1515324718483" duration="4003000" />
       <workItem from="1515332231061" duration="3557000" />
       <workItem from="1515934880518" duration="22124000" />
-      <workItem from="1516035180510" duration="11785000" />
+      <workItem from="1516035180510" duration="12286000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99202000" />
+    <option name="totallyTimeSpent" value="99703000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="23" width="1209" height="731" extended-state="0" />
@@ -832,16 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/earthquakes/show.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="54" column="102" lean-forward="false" selection-start-line="54" selection-start-column="102" selection-end-line="54" selection-end-column="102" />
-          <folding>
-            <element signature="e#1417#1501#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPostData.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="282">
@@ -852,10 +842,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EarthquakesController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-317">
-          <caret line="18" column="5" lean-forward="false" selection-start-line="18" selection-start-column="5" selection-end-line="18" selection-end-column="5" />
+        <state relative-caret-position="134">
+          <caret line="52" column="38" lean-forward="false" selection-start-line="52" selection-start-column="38" selection-end-line="52" selection-end-column="38" />
           <folding>
             <element signature="e#40#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/earthquakes/show.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="50" column="45" lean-forward="false" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+          <folding>
+            <element signature="e#1425#1509#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
