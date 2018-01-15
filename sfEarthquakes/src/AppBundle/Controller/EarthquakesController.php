@@ -75,9 +75,40 @@ class EarthquakesController extends Controller
     }
 
     /**
-     * @Route("/region-{ruid}", name="region_show")
+     * @Route("/{name}", name="region_show")
      */
-    public function regionAction($ruid, Request $request) {
+    public function regionAction($name, Request $request) {
+
+        $regionName = "";
+        $ruid = 0;
+        switch ($name) {
+            case "eu":
+                $ruid = 0;
+                $regionName = "Europe";
+                break;
+            case "asia":
+                $ruid = 1;
+                $regionName = "Asia";
+                break;
+            case "na":
+                $ruid = 2;
+                $regionName = "North America";
+                break;
+            case "sa":
+                $ruid = 3;
+                $regionName = "South America";
+                break;
+            case "africa":
+                $ruid = 4;
+                $regionName = "Africa";
+                break;
+            case "au":
+                $ruid = 5;
+                $regionName = "Australia";
+                break;
+        }
+
+
         $qb = $this->getDoctrine()
             ->getManager()
             ->createQueryBuilder();
@@ -90,6 +121,10 @@ class EarthquakesController extends Controller
             ->orderBy('p.createdAt', 'DESC');
 
 
+
+
+
+
         $paginator = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $qb,
@@ -97,27 +132,7 @@ class EarthquakesController extends Controller
             5
         );
 
-        $regionName = "";
-        switch ($ruid) {
-            case 0:
-                $regionName = "Europe";
-                break;
-            case 1:
-                $regionName = "Asia";
-                break;
-            case 2:
-                $regionName = "North America";
-                break;
-            case 3:
-                $regionName = "South America";
-                break;
-            case 4:
-                $regionName = "Africa";
-                break;
-            case 5:
-                $regionName = "Australia";
-                break;
-        }
+
 
         return $this->render('earthquakes/index.html.twig', array(
             'posts' => $pagination,

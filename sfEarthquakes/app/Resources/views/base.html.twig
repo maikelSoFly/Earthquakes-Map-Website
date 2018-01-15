@@ -32,22 +32,22 @@
                     <a class="nav-link" href="/">World</a>
                 </li>
                 <li class="nav-item {% if regionID is defined and regionID == 0 %}active{% endif %}">
-                    <a class="nav-link" href="{{ path('region_show', {'ruid': 0}) }}">Europe</a>
+                    <a class="nav-link" href="{{ path('region_show', {'name': 'eu'}) }}">Europe</a>
                 </li>
                 <li class="nav-item {% if regionID is defined and regionID == 1 %}active{% endif %}">
-                    <a class="nav-link" href="{{ path('region_show', {'ruid': 1}) }}">Asia</a>
+                    <a class="nav-link" href="{{ path('region_show', {'name': 'asia'}) }}">Asia</a>
                 </li>
                 <li class="nav-item {% if regionID is defined and regionID == 2 %}active{% endif %}">
-                    <a class="nav-link" href="{{ path('region_show', {'ruid': 2}) }}">North America</a>
+                    <a class="nav-link" href="{{ path('region_show', {'name': 'na'}) }}">North America</a>
                 </li>
                 <li class="nav-item {% if regionID is defined and regionID == 3 %}active{% endif %}">
-                    <a class="nav-link" href="{{ path('region_show', {'ruid': 3}) }}">South America</a>
+                    <a class="nav-link" href="{{ path('region_show', {'name': 'sa'}) }}">South America</a>
                 </li>
                 <li class="nav-item {% if regionID is defined and regionID == 4 %}active{% endif %}">
-                    <a class="nav-link" href="{{ path('region_show', {'ruid': 4}) }}">Africa</a>
+                    <a class="nav-link" href="{{ path('region_show', {'name': 'africa'}) }}">Africa</a>
                 </li>
                 <li class="nav-item {% if regionID is defined and regionID == 5 %}active{% endif %}">
-                    <a class="nav-link" href="{{ path('region_show', {'ruid': 5}) }}">Australia</a>
+                    <a class="nav-link" href="{{ path('region_show', {'name': 'au'}) }}">Australia</a>
                 </li>
             </ul>
 
