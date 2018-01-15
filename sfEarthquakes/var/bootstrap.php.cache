@@ -141,18 +141,26 @@ return $first ? null : array();
 return $first ? $default : array($default);
 }
 if ($first) {
-return count($headers[$key]) ? $headers[$key][0] : $default;
+return \count($headers[$key]) ? $headers[$key][0] : $default;
 }
 return $headers[$key];
 }
 public function set($key, $values, $replace = true)
 {
 $key = str_replace('_','-', strtolower($key));
-$values = array_values((array) $values);
+if (\is_array($values)) {
+$values = array_values($values);
 if (true === $replace || !isset($this->headers[$key])) {
 $this->headers[$key] = $values;
 } else {
 $this->headers[$key] = array_merge($this->headers[$key], $values);
+}
+} else {
+if (true === $replace || !isset($this->headers[$key])) {
+$this->headers[$key] = array($values);
+} else {
+$this->headers[$key][] = $values;
+}
 }
 if ('cache-control'=== $key) {
 $this->cacheControl = $this->parseCacheControl(implode(', ', $this->headers[$key]));
@@ -643,7 +651,7 @@ public static function setTrustedProxies(array $proxies)
 {
 self::$trustedProxies = $proxies;
 if (2 > func_num_args()) {
-@trigger_error(sprintf('The %s() method expects a bit field of Request::HEADER_* as second argument since version 3.3. Defining it will be required in 4.0. ', __METHOD__), E_USER_DEPRECATED);
+@trigger_error(sprintf('The %s() method expects a bit field of Request::HEADER_* as second argument since Symfony 3.3. Defining it will be required in 4.0. ', __METHOD__), E_USER_DEPRECATED);
 return;
 }
 $trustedHeaderSet = (int) func_get_arg(1);
@@ -673,7 +681,7 @@ return self::$trustedHostPatterns;
 }
 public static function setTrustedHeaderName($key, $value)
 {
-@trigger_error(sprintf('The "%s()" method is deprecated since version 3.3 and will be removed in 4.0. Use the $trustedHeaderSet argument of the Request::setTrustedProxies() method instead.', __METHOD__), E_USER_DEPRECATED);
+@trigger_error(sprintf('The "%s()" method is deprecated since Symfony 3.3 and will be removed in 4.0. Use the $trustedHeaderSet argument of the Request::setTrustedProxies() method instead.', __METHOD__), E_USER_DEPRECATED);
 if ('forwarded'=== $key) {
 $key = self::HEADER_FORWARDED;
 } elseif ('client_ip'=== $key) {
@@ -698,7 +706,7 @@ self::$trustedHeaderSet &= ~$key;
 public static function getTrustedHeaderName($key)
 {
 if (2 > func_num_args() || func_get_arg(1)) {
-@trigger_error(sprintf('The "%s()" method is deprecated since version 3.3 and will be removed in 4.0. Use the Request::getTrustedHeaderSet() method instead.', __METHOD__), E_USER_DEPRECATED);
+@trigger_error(sprintf('The "%s()" method is deprecated since Symfony 3.3 and will be removed in 4.0. Use the Request::getTrustedHeaderSet() method instead.', __METHOD__), E_USER_DEPRECATED);
 }
 if (!array_key_exists($key, self::$trustedHeaders)) {
 throw new \InvalidArgumentException(sprintf('Unable to get the trusted header name for key "%s".', $key));
@@ -1047,7 +1055,7 @@ return $this->getMethod() === strtoupper($method);
 public function isMethodSafe()
 {
 if (!func_num_args() || func_get_arg(0)) {
-@trigger_error('Checking only for cacheable HTTP methods with Symfony\Component\HttpFoundation\Request::isMethodSafe() is deprecated since version 3.2 and will throw an exception in 4.0. Disable checking only for cacheable methods by calling the method with `false` as first argument or use the Request::isMethodCacheable() instead.', E_USER_DEPRECATED);
+@trigger_error('Checking only for cacheable HTTP methods with Symfony\Component\HttpFoundation\Request::isMethodSafe() is deprecated since Symfony 3.2 and will throw an exception in 4.0. Disable checking only for cacheable methods by calling the method with `false` as first argument or use the Request::isMethodCacheable() instead.', E_USER_DEPRECATED);
 return in_array($this->getMethod(), array('GET','HEAD'));
 }
 return in_array($this->getMethod(), array('GET','HEAD','OPTIONS','TRACE'));
@@ -1059,6 +1067,16 @@ return in_array($this->getMethod(), array('HEAD','GET','PUT','DELETE','TRACE','O
 public function isMethodCacheable()
 {
 return in_array($this->getMethod(), array('GET','HEAD'));
+}
+public function getProtocolVersion()
+{
+if ($this->isFromTrustedProxy()) {
+preg_match('~^(HTTP/)?([1-9]\.[0-9]) ~', $this->headers->get('Via'), $matches);
+if ($matches) {
+return'HTTP/'.$matches[2];
+}
+}
+return $this->server->get('SERVER_PROTOCOL');
 }
 public function getContent($asResource = false)
 {
@@ -1227,7 +1245,7 @@ $baseUrl ='/'.$seg.$baseUrl;
 } while ($last > $index && (false !== $pos = strpos($path, $baseUrl)) && 0 != $pos);
 }
 $requestUri = $this->getRequestUri();
-if ($requestUri !==''&& $requestUri[0] !=='/') {
+if (''!== $requestUri &&'/'!== $requestUri[0]) {
 $requestUri ='/'.$requestUri;
 }
 if ($baseUrl && false !== $prefix = $this->getUrlencodedPrefix($requestUri, $baseUrl)) {
@@ -1251,11 +1269,11 @@ return rtrim($baseUrl,'/'.DIRECTORY_SEPARATOR);
 }
 protected function prepareBasePath()
 {
-$filename = basename($this->server->get('SCRIPT_FILENAME'));
 $baseUrl = $this->getBaseUrl();
 if (empty($baseUrl)) {
 return'';
 }
+$filename = basename($this->server->get('SCRIPT_FILENAME'));
 if (basename($baseUrl) === $filename) {
 $basePath = dirname($baseUrl);
 } else {
@@ -1268,27 +1286,27 @@ return rtrim($basePath,'/');
 }
 protected function preparePathInfo()
 {
-$baseUrl = $this->getBaseUrl();
 if (null === ($requestUri = $this->getRequestUri())) {
 return'/';
 }
 if (false !== $pos = strpos($requestUri,'?')) {
 $requestUri = substr($requestUri, 0, $pos);
 }
-if ($requestUri !==''&& $requestUri[0] !=='/') {
+if (''!== $requestUri &&'/'!== $requestUri[0]) {
 $requestUri ='/'.$requestUri;
 }
-$pathInfo = substr($requestUri, strlen($baseUrl));
-if (null !== $baseUrl && (false === $pathInfo ||''=== $pathInfo)) {
-return'/';
-} elseif (null === $baseUrl) {
+if (null === ($baseUrl = $this->getBaseUrl())) {
 return $requestUri;
+}
+$pathInfo = substr($requestUri, strlen($baseUrl));
+if (false === $pathInfo ||''=== $pathInfo) {
+return'/';
 }
 return (string) $pathInfo;
 }
 protected static function initializeFormats()
 {
-static::$formats = array('html'=> array('text/html','application/xhtml+xml'),'txt'=> array('text/plain'),'js'=> array('application/javascript','application/x-javascript','text/javascript'),'css'=> array('text/css'),'json'=> array('application/json','application/x-json'),'xml'=> array('text/xml','application/xml','application/x-xml'),'rdf'=> array('application/rdf+xml'),'atom'=> array('application/atom+xml'),'rss'=> array('application/rss+xml'),'form'=> array('application/x-www-form-urlencoded'),
+static::$formats = array('html'=> array('text/html','application/xhtml+xml'),'txt'=> array('text/plain'),'js'=> array('application/javascript','application/x-javascript','text/javascript'),'css'=> array('text/css'),'json'=> array('application/json','application/x-json'),'jsonld'=> array('application/ld+json'),'xml'=> array('text/xml','application/xml','application/x-xml'),'rdf'=> array('application/rdf+xml'),'atom'=> array('application/atom+xml'),'rss'=> array('application/rss+xml'),'form'=> array('application/x-www-form-urlencoded'),
 );
 }
 private function setPhpDefaultLocale($locale)

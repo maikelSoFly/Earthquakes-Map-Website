@@ -1,6 +1,15 @@
 Changelog
 =========
 
+### 2.0.2 (2017-11-29)
+* Fix empty password in ChangePasswordFormType.
+* Fix empty password in ProfileFormType.
+* Introduced aliases for autowiring user and group managers.
+* Added Bengali translation.
+* Added Galician translation.
+* Updated Danish translation.
+* Updated Japanese translation.
+
 ### 2.0.1 (2017-05-31)
 
 * Add SwiftMailer 6 compatibility.
@@ -92,9 +101,11 @@ Changelog
 ### 1.3.8 (xxxx-xx-xx)
 
 * Fixed invalid `isAccountNonExpired` timestamp when year is 2038
+* Fixed validation of blank passwords
 * Removed any new lines in email subjects
 * Added trailing dot flash messages
 * Added trailing dot validator messages
+* Added Galician translation
 * Use `random_bytes` to generate tokens
 
 ### 1.3.7 (2016-11-22)

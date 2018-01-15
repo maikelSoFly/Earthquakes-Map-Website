@@ -209,7 +209,7 @@ class AdminController extends Controller
             $this->dispatch(EasyAdminEvents::PRE_UPDATE, array('entity' => $entity));
 
             $this->executeDynamicMethod('preUpdate<EntityName>Entity', array($entity));
-            $this->em->flush();
+            $this->executeDynamicMethod('update<EntityName>Entity', array($entity));
 
             $this->dispatch(EasyAdminEvents::POST_UPDATE, array('entity' => $entity));
 
@@ -279,9 +279,7 @@ class AdminController extends Controller
             $this->dispatch(EasyAdminEvents::PRE_PERSIST, array('entity' => $entity));
 
             $this->executeDynamicMethod('prePersist<EntityName>Entity', array($entity));
-
-            $this->em->persist($entity);
-            $this->em->flush();
+            $this->executeDynamicMethod('persist<EntityName>Entity', array($entity));
 
             $this->dispatch(EasyAdminEvents::POST_PERSIST, array('entity' => $entity));
 
@@ -328,8 +326,7 @@ class AdminController extends Controller
             $this->executeDynamicMethod('preRemove<EntityName>Entity', array($entity));
 
             try {
-                $this->em->remove($entity);
-                $this->em->flush();
+                $this->executeDynamicMethod('remove<EntityName>Entity', array($entity));
             } catch (ForeignKeyConstraintViolationException $e) {
                 throw new EntityRemoveException(array('entity_name' => $this->entity['name'], 'message' => $e->getMessage()));
             }
@@ -351,8 +348,9 @@ class AdminController extends Controller
     {
         $this->dispatch(EasyAdminEvents::PRE_SEARCH);
 
+        $query = trim($this->request->query->get('query'));
         // if the search query is empty, redirect to the 'list' action
-        if ('' === $this->request->query->get('query')) {
+        if ('' === $query) {
             $queryParameters = array_replace($this->request->query->all(), array('action' => 'list', 'query' => null));
             $queryParameters = array_filter($queryParameters);
 
@@ -362,7 +360,7 @@ class AdminController extends Controller
         $searchableFields = $this->entity['search']['fields'];
         $paginator = $this->findBy(
             $this->entity['class'],
-            $this->request->query->get('query'),
+            $query,
             $searchableFields,
             $this->request->query->get('page', 1),
             $this->config['list']['max_results'],
@@ -398,13 +396,14 @@ class AdminController extends Controller
         $entityConfig = $this->entity;
 
         // the method_exists() check is needed because Symfony 2.3 doesn't have isWritable() method
-        if (method_exists($this->get('property_accessor'), 'isWritable') && !$this->get('property_accessor')->isWritable($entity, $property)) {
+        if (method_exists($this->get('easy_admin.property_accessor'), 'isWritable') && !$this->get('easy_admin.property_accessor')->isWritable($entity, $property)) {
             throw new \RuntimeException(sprintf('The "%s" property of the "%s" entity is not writable.', $property, $entityConfig['name']));
         }
 
         $this->dispatch(EasyAdminEvents::PRE_UPDATE, array('entity' => $entity, 'newValue' => $value));
 
-        $this->get('property_accessor')->setValue($entity, $property, $value);
+        $this->get('easy_admin.property_accessor')->setValue($entity, $property, $value);
+        $this->executeDynamicMethod('preUpdate<EntityName>Entity', array($entity));
 
         $this->em->persist($entity);
         $this->em->flush();
@@ -439,6 +438,18 @@ class AdminController extends Controller
 
     /**
      * Allows applications to modify the entity associated with the item being
+     * created while persisting it.
+     *
+     * @param object $entity
+     */
+    protected function persistEntity($entity)
+    {
+        $this->em->persist($entity);
+        $this->em->flush($entity);
+    }
+
+    /**
+     * Allows applications to modify the entity associated with the item being
      * edited before persisting it.
      *
      * @param object $entity
@@ -449,12 +460,35 @@ class AdminController extends Controller
 
     /**
      * Allows applications to modify the entity associated with the item being
+     * edited before updating it.
+     *
+     * @param object $entity
+     */
+    protected function updateEntity($entity)
+    {
+        $this->em->flush($entity);
+    }
+
+    /**
+     * Allows applications to modify the entity associated with the item being
      * deleted before removing it.
      *
      * @param object $entity
      */
     protected function preRemoveEntity($entity)
     {
+    }
+
+    /**
+     * Allows applications to modify the entity associated with the item being
+     * deleted before removing it.
+     *
+     * @param object $entity
+     */
+    protected function removeEntity($entity)
+    {
+        $this->em->remove($entity);
+        $this->em->flush($entity);
     }
 
     /**

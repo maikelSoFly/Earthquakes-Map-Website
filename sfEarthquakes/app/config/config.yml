@@ -7,6 +7,7 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: pl
+    image_directory: '%kernel.project_dir%/public/uploads/images'
 
 framework:
     #esi: ~
@@ -46,7 +47,7 @@ doctrine:
             default_connection:   default
             connections:
                 default:
-                    driver:   %database_driver%
+
                     host:     %database_host%
                     port:     %database_port%
                     dbname:   %database_name%
@@ -97,13 +98,29 @@ fos_user:
 
 easy_admin:
     entities:
-        - AppBundle\Entity\Post
-        - AppBundle\Entity\Comment
-    list:
-        actions:
-            - { name: 'show', icon: 'search', label: 'Show' }
-            - { name: 'edit', icon: 'pencil', label: 'Edit' }
-            - { name: 'delete', icon: false, label: 'Delete' }
-            - { name: 'new', icon: false, label: 'New' }
-            - { name: 'search', icon: false, label: 'Search' }
+        Post:
+            class: AppBundle\Entity\Post
+            form:
+                fields:
+                   - title
+                   - content
+                   - { property: 'imageFile', type: 'file', label: 'Upload image', help: 'Select file to upload image' }
+                   - regionId
+                   - comments
+        Comment:
+            class: AppBundle\Entity\Comment
+#    list:
+#        actions:
+#            - { name: 'show', icon: 'search', label: 'Show' }
+#            - { name: 'edit', icon: 'pencil', label: 'Edit' }
+#            - { name: 'delete', icon: false, label: 'Delete' }
+#            - { name: 'new', icon: false, label: 'New' }
+#            - { name: 'search', icon: false, label: 'Search' }
 
+vich_uploader:
+    db_driver: orm # or mongodb or propel or phpcr
+
+    mappings:
+        post_image:
+            uri_prefix:         /images/posts
+            upload_destination: %kernel.root_dir%/../web/images/posts

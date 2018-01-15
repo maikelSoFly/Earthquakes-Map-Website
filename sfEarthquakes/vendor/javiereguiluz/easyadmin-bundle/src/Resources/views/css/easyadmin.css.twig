@@ -158,6 +158,11 @@ div.flash-error strong {
 
 {# Switches / toggles
    ------------------------------------------------------------------------- #}
+{# needed to neutralize the default .toggle styles applied by Bootstrap Toggle
+   which collide with the .toggle class applied to <th> too #}
+.toggle { position: initial; }
+.toggle:not(th) { position: relative; }
+
 .toggle.btn-xs {
  width: 44px;
 }
@@ -1329,6 +1334,10 @@ body.error .error-message {
         border-bottom: 0;
         border-top: 1px solid {{ colors.table_row_border }};
         display: table-cell;
+    }
+    body.list table tbody td:last-child {
+        white-space: nowrap;
+        width: 1%;
     }
     table td:before {
         content: none;

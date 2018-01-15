@@ -11,3 +11,7 @@ body {
     padding: 6rem 1.5rem;
     text-align: center;
 }
+
+.postImage {
+    width: 100%;
+}

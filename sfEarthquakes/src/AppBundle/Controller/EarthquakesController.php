@@ -82,7 +82,7 @@ class EarthquakesController extends Controller
             ->getManager()
             ->createQueryBuilder();
 
-        
+
         $qb->select('p')
             ->from('AppBundle:Post', 'p')
             ->where('p.regionId = :regionID')
