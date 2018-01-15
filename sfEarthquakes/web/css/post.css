@@ -15,3 +15,18 @@ body {
 .postImage {
     width: 100%;
 }
+
+.imageFrame {
+    padding: 20px 20px 20px 20px;
+    background-color: #191a1a
+}
+
+article {
+    text-align: justify;
+}
+
+.commentFrame {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 10px;
+}

@@ -1,13 +1,53 @@
 .post-title-bar {
-    background: rgb(25, 26, 26);
+    /*background: rgb(25, 26, 26);*/
     height: 100px;
     /* This centers our sketch horizontally. */
-    line-height: 100px;
+    line-height: 90px;
     text-align: center;
+    border-radius: 10px;
+    border-style: solid;
+    border-color: #157ffb;
+    color: #157ffb;
 
 }
 
 h1 {
     color: white;
+}
+
+.thumbnail {
+    width: 35%;
+    float: left;
+
+    border-style: solid;
+    border-color: #fff
+}
+
+article {
+    margin-left: 20px;
+    overflow: auto;
+    text-align: justify;
+}
+
+.postFrame {
+    background-color: #f7f7f7;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+}
+
+.titleFrame {
+    background: rgb(25, 26, 26);
+    padding: 10px 10px 10px 10px;
+    /*border-bottom-style: solid;*/
+    margin: -10px -10px -10px -10px;
+    border-color: #bbbbbb;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.postContentMain {
+    margin-left: 10px;
 }
 

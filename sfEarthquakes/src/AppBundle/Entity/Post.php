@@ -65,6 +65,13 @@ class Post
     private $content;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="fullContent", type="text", nullable=true)
+     */
+    private $fullContent;
+
+    /**
      * @var \DateTime
      *
      * @ORM\Column(name="created_at", type="datetime")
@@ -320,5 +327,29 @@ class Post
     public function getImage()
     {
         return $this->image;
+    }
+
+    /**
+     * Set fullContent.
+     *
+     * @param string|null $fullContent
+     *
+     * @return Post
+     */
+    public function setFullContent($fullContent = null)
+    {
+        $this->fullContent = $fullContent;
+
+        return $this;
+    }
+
+    /**
+     * Get fullContent.
+     *
+     * @return string|null
+     */
+    public function getFullContent()
+    {
+        return $this->fullContent;
     }
 }

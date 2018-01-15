@@ -26,23 +26,20 @@ class LoadPostData implements FixtureInterface
     {
         $faker = \Faker\Factory::create();
 
-
-
-
-
         for($i = 0; $i < 6; $i++) {
             for ($j = 0; $j < 200; $j++) {
                 $post = new Post();
                 $post->setTitle($faker->sentence(3));
                 $post->setContent($faker->text(700));
+                $post->setFullContent($faker->text(8000));
                 $post->setCreatedAtD($faker->dateTimeThisMonth());
+                $imgName = "img" . $j%4 . ".jpg";
+                $post->setImage($imgName);
                 $post->setRegionId($i);
                 $manager->persist($post);
             }
 
         }
-
-
 
         $manager->flush();
     }

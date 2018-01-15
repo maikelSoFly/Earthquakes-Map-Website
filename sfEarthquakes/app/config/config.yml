@@ -104,6 +104,7 @@ easy_admin:
                 fields:
                    - title
                    - content
+                   - fullContent
                    - { property: 'imageFile', type: 'file', label: 'Upload image', help: 'Select file to upload image' }
                    - regionId
                    - comments

@@ -11,12 +11,15 @@
           <p> Added: {{ post.createdAt }}</p>
       </font>
 
-
-      <img class="postImage" src="/images/posts/{{ post.image }}"/>
+      {% if post.image %}
+      <div class="imageFrame">
+        <img class="postImage" src="/images/posts/{{ post.image }}"/>
+      </div>
+      {% endif %}
 
       <div class="col-xs-12" style="height:30px;"></div>
+      <article><p> {{ post.fullContent }} </p></article>
 
-      <p> {{ post.content }} </p>
 
           <hr/>
 
@@ -47,8 +50,9 @@
 
       {% for comment in post.comments %}
 
-          <div>
+          <div class="commentFrame">
               <p>{{ comment.content }}</p>
+              <div style="height:1px; background-color: #bbbbbb; margin-bottom: 15px; margin-top: 5px;"></div>
               <font size=2 color="gray">
                   <p> From: {{ comment.user }}</p>
                   <p> Added: {{ comment.createdAt }}</p>
