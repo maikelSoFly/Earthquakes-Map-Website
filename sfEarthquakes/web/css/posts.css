@@ -51,3 +51,8 @@ article {
     margin-left: 10px;
 }
 
+.titleLink:hover {
+    text-decoration: none;
+    color: #ffffff;
+}
+

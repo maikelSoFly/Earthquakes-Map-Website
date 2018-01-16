@@ -15,7 +15,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="EarthquakesController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="EarthquakesController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/EarthquakesController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="280">
@@ -59,7 +59,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoadPostData.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="LoadPostData.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPostData.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="282">
@@ -84,17 +84,17 @@
       <file leaf-file-name="index.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Resources/views/earthquakes/index.html.twig">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+            <state relative-caret-position="238">
+              <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
               <folding>
                 <element signature="e#563#583#0#HTML" expanded="true" />
                 <element signature="e#786#807#0#HTML" expanded="true" />
-                <element signature="e#1020#1041#0#HTML" expanded="true" />
-                <element signature="e#1355#1389#0#HTML" expanded="true" />
-                <element signature="e#1418#1485#0#HTML" expanded="true" />
-                <element signature="e#1603#1625#0#HTML" expanded="true" />
-                <element signature="e#1743#1762#0#HTML" expanded="true" />
-                <element signature="e#1801#1822#0#HTML" expanded="true" />
+                <element signature="e#1038#1059#0#HTML" expanded="true" />
+                <element signature="e#1373#1407#0#HTML" expanded="true" />
+                <element signature="e#1436#1503#0#HTML" expanded="true" />
+                <element signature="e#1621#1643#0#HTML" expanded="true" />
+                <element signature="e#1761#1780#0#HTML" expanded="true" />
+                <element signature="e#1819#1840#0#HTML" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,8 +113,8 @@
       <file leaf-file-name="post.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/post.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
+            <state relative-caret-position="285">
+              <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -123,8 +123,8 @@
       <file leaf-file-name="posts.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/css/posts.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
+            <state relative-caret-position="643">
+              <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
               <folding />
             </state>
           </provider>
@@ -178,12 +178,12 @@
         <option value="$PROJECT_DIR$/src/AppBundle/Entity/Post.php" />
         <option value="$PROJECT_DIR$/app/config/config.yml" />
         <option value="$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPostData.php" />
-        <option value="$PROJECT_DIR$/web/css/post.css" />
-        <option value="$PROJECT_DIR$/web/css/posts.css" />
         <option value="$PROJECT_DIR$/app/Resources/views/earthquakes/show.html.twig" />
-        <option value="$PROJECT_DIR$/app/Resources/views/earthquakes/index.html.twig" />
         <option value="$PROJECT_DIR$/app/Resources/views/base.html.twig" />
         <option value="$PROJECT_DIR$/src/AppBundle/Controller/EarthquakesController.php" />
+        <option value="$PROJECT_DIR$/app/Resources/views/earthquakes/index.html.twig" />
+        <option value="$PROJECT_DIR$/web/css/posts.css" />
+        <option value="$PROJECT_DIR$/web/css/post.css" />
       </list>
     </option>
   </component>
@@ -294,6 +294,14 @@
               <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="sfEarthquakes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sfEarthquakes" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="earthquakes" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="sfEarthquakes" type="b2602c69:ProjectViewProjectNode" />
@@ -425,12 +433,12 @@
       <workItem from="1515324718483" duration="4003000" />
       <workItem from="1515332231061" duration="3557000" />
       <workItem from="1515934880518" duration="22124000" />
-      <workItem from="1516035180510" duration="13630000" />
+      <workItem from="1516035180510" duration="14319000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="101047000" />
+    <option name="totallyTimeSpent" value="101736000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="39" y="23" width="1209" height="731" extended-state="0" />
@@ -487,12 +495,12 @@
           <folding>
             <element signature="e#563#583#0#HTML" expanded="true" />
             <element signature="e#786#807#0#HTML" expanded="true" />
-            <element signature="e#1020#1041#0#HTML" expanded="true" />
-            <element signature="e#1355#1389#0#HTML" expanded="true" />
-            <element signature="e#1418#1485#0#HTML" expanded="true" />
-            <element signature="e#1603#1625#0#HTML" expanded="true" />
-            <element signature="e#1743#1762#0#HTML" expanded="true" />
-            <element signature="e#1801#1822#0#HTML" expanded="true" />
+            <element signature="e#1038#1059#0#HTML" expanded="true" />
+            <element signature="e#1373#1407#0#HTML" expanded="true" />
+            <element signature="e#1436#1503#0#HTML" expanded="true" />
+            <element signature="e#1621#1643#0#HTML" expanded="true" />
+            <element signature="e#1761#1780#0#HTML" expanded="true" />
+            <element signature="e#1819#1840#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -536,12 +544,12 @@
           <folding>
             <element signature="e#563#583#0#HTML" expanded="true" />
             <element signature="e#786#807#0#HTML" expanded="true" />
-            <element signature="e#1020#1041#0#HTML" expanded="true" />
-            <element signature="e#1355#1389#0#HTML" expanded="true" />
-            <element signature="e#1418#1485#0#HTML" expanded="true" />
-            <element signature="e#1603#1625#0#HTML" expanded="true" />
-            <element signature="e#1743#1762#0#HTML" expanded="true" />
-            <element signature="e#1801#1822#0#HTML" expanded="true" />
+            <element signature="e#1038#1059#0#HTML" expanded="true" />
+            <element signature="e#1373#1407#0#HTML" expanded="true" />
+            <element signature="e#1436#1503#0#HTML" expanded="true" />
+            <element signature="e#1621#1643#0#HTML" expanded="true" />
+            <element signature="e#1761#1780#0#HTML" expanded="true" />
+            <element signature="e#1819#1840#0#HTML" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -777,22 +785,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/post.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="30" column="23" lean-forward="false" selection-start-line="30" selection-start-column="23" selection-end-line="30" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/css/posts.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="18" column="12" lean-forward="false" selection-start-line="18" selection-start-column="12" selection-end-line="18" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Post.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="94">
@@ -815,31 +807,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="645">
           <caret line="43" column="18" lean-forward="false" selection-start-line="43" selection-start-column="18" selection-end-line="43" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Resources/views/earthquakes/index.html.twig">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#563#583#0#HTML" expanded="true" />
-            <element signature="e#786#807#0#HTML" expanded="true" />
-            <element signature="e#1020#1041#0#HTML" expanded="true" />
-            <element signature="e#1355#1389#0#HTML" expanded="true" />
-            <element signature="e#1418#1485#0#HTML" expanded="true" />
-            <element signature="e#1603#1625#0#HTML" expanded="true" />
-            <element signature="e#1743#1762#0#HTML" expanded="true" />
-            <element signature="e#1801#1822#0#HTML" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPostData.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
           <folding />
         </state>
       </provider>
@@ -869,6 +836,47 @@
           <folding>
             <element signature="e#40#69#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/earthquakes/index.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="30" column="41" lean-forward="false" selection-start-line="30" selection-start-column="41" selection-end-line="30" selection-end-column="41" />
+          <folding>
+            <element signature="e#563#583#0#HTML" expanded="true" />
+            <element signature="e#786#807#0#HTML" expanded="true" />
+            <element signature="e#1038#1059#0#HTML" expanded="true" />
+            <element signature="e#1373#1407#0#HTML" expanded="true" />
+            <element signature="e#1436#1503#0#HTML" expanded="true" />
+            <element signature="e#1621#1643#0#HTML" expanded="true" />
+            <element signature="e#1761#1780#0#HTML" expanded="true" />
+            <element signature="e#1819#1840#0#HTML" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/posts.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="643">
+          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/css/post.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="19" column="20" lean-forward="false" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/DataFixtures/ORM/LoadPostData.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="282">
+          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
+          <folding />
         </state>
       </provider>
     </entry>
