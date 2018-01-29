@@ -75,7 +75,7 @@ class EarthquakesController extends Controller
     }
 
     /**
-     * @Route("/{name}", name="region_show")
+     * @Route("/region-{name}", name="region_show")
      */
     public function regionAction($name, Request $request) {
 
